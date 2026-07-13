@@ -1,0 +1,1141 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gospel Intel </title>
+    <!-- Icon Font Library Asset -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
+    <style>
+        /* Base Reset & Futuristic Theme Styling Variables */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: #0d1726;
+            color: #ffffff;
+            min-height: 100dvh; /* Dynamic viewport height to prevent mobile browser cutoff */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Responsive Layout Grid Container Setup */
+        .app-container {
+            width: 100%;
+            max-width: 1200px;
+            padding: 8px 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            flex: 1;
+        }
+
+        /* Navbar Layout styling */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 4px 16px 4px;
+            width: 100%;
+            border-bottom: 1px solid #1e324f;
+        }
+
+        .brand-logo {
+            font-size: 18px;
+            font-weight: 600;
+            text-align: center;
+            letter-spacing: -0.5px;
+            color: #ffffff;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            color: #a0aec0;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        .nav-links a:hover {
+            color: #ffffff;
+        }
+
+        .menu-btn {
+            display: none;
+            font-size: 22px;
+            color: #a0aec0;
+            cursor: pointer;
+            transition: color 0.2s ease;
+        }
+
+        .menu-btn:hover {
+            color: #ffffff;
+        }
+
+        /* Split Screen Responsive Grid Core Architecture */
+        .main-layout-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 24px;
+            width: 100%;
+        }
+
+        /* Stream Containers */
+        .content-stream {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .sidebar-stream {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        /* Card Panels Unified UI Specifications */
+        .post-card, .sidebar-card, .post-cta-container, .newsletter-card {
+            background-color: #132237;
+            border: 1px solid #1e324f;
+            border-radius: 16px;
+            padding: 12px;
+        }
+
+        .post-card {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        /* Media Container Hero Engine Wrapper */
+        .media-container {
+            position: relative;
+            width: 100%;
+            border-radius: 12px;
+            overflow: hidden;
+            aspect-ratio: 16 / 9;
+            border: 1px solid #1e324f;
+            background-color: #0d1726;
+        }
+
+        .article-featured-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .video-wrapper iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        /* Category & Meta Panel Layout */
+        .post-meta-header {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 1px solid #1e324f;
+            padding-bottom: 14px;
+        }
+
+        .meta-left {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .category-badge {
+            color: #3182ce;
+            background-color: rgba(49, 130, 206, 0.15);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .article-meta-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            color: #a0aec0;
+            font-size: 12px;
+        }
+
+        .meta-item-tag {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .meta-item-tag i {
+            color: #3182ce;
+        }
+
+
+        /* Article Prose Elements */
+        .article-body {
+            font-size: 16px;
+            line-height: 1.7;
+            color: #cbd5e0;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            white-space: pre-wrap;
+        }
+
+        .article-body blockquote {
+            background: linear-gradient(90deg, rgba(49, 130, 206, 0.1) 0%, rgba(13, 23, 38, 0) 100%);
+            border-left: 4px solid #3182ce;
+            padding: 16px 20px;
+            border-radius: 0 8px 8px 0;
+            margin: 8px 0;
+            font-style: italic;
+            color: #e2e8f0;
+        }
+
+        /* Tag Cloud Components */
+        .tag-cloud {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 4px;
+            padding-top: 16px;
+            border-top: 1px solid #1e324f;
+        }
+
+        .tag-item {
+            background-color: #172a45;
+            color: #a0aec0;
+            font-size: 12px;
+            padding: 5px 12px;
+            border-radius: 14px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .tag-item:hover {
+            background-color: #1e324f;
+            color: #ffffff;
+        }
+
+        /* Share Area Custom UI Module */
+        .share-section {
+            margin-top: 4px;
+            padding-top: 20px;
+            border-top: 1px solid #1e324f;
+        }
+
+        .share-title {
+            font-size: 15px;
+            font-weight: 600;
+            color: #a0aec0;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .share-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .share-icon-btn {
+            height: 40px;
+            padding: 0 16px;
+            border-radius: 8px;
+            border: 1px solid #1e324f;
+            background-color: #172a45;
+            color: #cbd5e0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .share-icon-btn:hover {
+            transform: translateY(-2px);
+            color: #ffffff;
+        }
+
+        .share-icon-btn.fb:hover { background-color: #1877f2; border-color: #1877f2; }
+        .share-icon-btn.tw:hover { background-color: #1da1f2; border-color: #1da1f2; }
+        .share-icon-btn.wa:hover { background-color: #25d366; border-color: #25d366; }
+        .share-icon-btn.in:hover { background-color: #0077b5; border-color: #0077b5; }
+        .share-icon-btn.copy:hover { background-color: #3182ce; border-color: #3182ce; }
+
+        /* Author Profile Panel Box Module */
+        .author-panel {
+            display: flex;
+            gap: 16px;
+            background-color: #0d1726;
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid #1a2e4c;
+            align-items: center;
+            margin-top: 12px;
+        }
+
+        .author-avatar {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            border: 2px solid #1e324f;
+            object-fit: cover;
+            flex-shrink: 0;
+        }
+
+        .author-details-box h3 {
+            font-size: 16px;
+            color: #ffffff;
+            margin-bottom: 4px;
+        }
+
+        .author-details-box p {
+            font-size: 13px;
+            color: #a0aec0;
+            line-height: 1.5;
+        }
+
+        /* Interactive Discussion/Comments Module Engine UI */
+        .discussion-block {
+            margin-top: 16px;
+            padding-top: 24px;
+            border-top: 1px solid #1e324f;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .discussion-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #ffffff;
+        }
+
+        .comment-node {
+            background-color: #0d1726;
+            border: 1px solid #1a2e4c;
+            border-radius: 10px;
+            padding: 16px;
+        }
+
+        .comment-node h4 {
+            font-size: 14px;
+            color: #3182ce;
+            margin-bottom: 6px;
+        }
+
+        .comment-node p {
+            font-size: 14px;
+            color: #cbd5e0;
+            line-height: 1.5;
+        }
+
+        .input-form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 12px;
+        }
+
+        .form-row-split {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .form-input-control, .form-textarea-control {
+            background-color: #0d1726;
+            border: 1px solid #1e324f;
+            border-radius: 8px;
+            padding: 12px;
+            color: #ffffff;
+            font-size: 14px;
+            outline: none;
+            width: 100%;
+            transition: border-color 0.2s ease;
+        }
+
+        .form-input-control:focus, .form-textarea-control:focus {
+            border-color: #3182ce;
+        }
+
+        .form-submit-btn {
+            background-color: #3182ce;
+            color: #ffffff;
+            border: none;
+            border-radius: 8px;
+            padding: 12px 24px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+            align-self: flex-start;
+        }
+
+        .form-submit-btn:hover {
+            background-color: #2b6cb0;
+        }
+
+        /* STANDALONE OUTER CONTENT STREAM CARDS */
+        .post-cta-container {
+            background: linear-gradient(135deg, #132237 0%, #0f1c2e 100%);
+            border: 1px dashed #2b466e;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .cta-title {
+            font-size: 18px;
+            font-weight: 700;
+            text-align: center;
+        }
+        
+
+        .cta-text {
+            font-size: 14px;
+            line-height: 1.6;
+            color: #a0aec0;
+        }
+
+        .pastor-attribution-banner {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background-color: #0d1726;
+            padding: 10px 14px;
+            border-radius: 8px;
+            border: 1px solid #1a2e4c;
+        }
+
+        .pastor-link {
+            color: #3182ce;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.2s ease;
+        }
+
+        .pastor-link:hover {
+            color: #63b3ed;
+            text-decoration: underline;
+        }
+
+        .newsletter-card {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .newsletter-header {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .newsletter-title {
+            font-size: 18px;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        .newsletter-subtitle {
+            font-size: 13px;
+            color: #a0aec0;
+        }
+
+        .newsletter-form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            width: 100%;
+        }
+
+        /* SIDEBAR COMPONENT DESIGN MODULES */
+        .sidebar-card h2 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            border-bottom: 1px solid #1e324f;
+            padding-bottom: 8px;
+            color: #ffffff;
+        }
+
+        .related-post-node {
+            display: flex;
+            gap: 12px;
+            padding-bottom: 14px;
+            margin-bottom: 14px;
+            border-bottom: 1px solid #1a2e4c;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .related-post-node:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .related-thumb {
+            width: 80px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 8px;
+            border: 1px solid #1e324f;
+            flex-shrink: 0;
+            background-color: #0d1726;
+        }
+
+        .related-meta {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .related-meta h4 {
+            font-size: 14px;
+            line-height: 1.4;
+            color: #e2e8f0;
+            font-weight: 600;
+            transition: color 0.2s ease;
+        }
+
+        .related-post-node:hover .related-meta h4 {
+            color: #3182ce;
+        }
+
+        .related-meta p {
+            font-size: 12px;
+            color: #718096;
+            margin-top: 2px;
+        }
+
+        /* Layout Footer Asset */
+        .app-footer {
+            width: 100%;
+            background-color: #09111c;
+            border-top: 1px solid #1e324f;
+            padding: 32px 20px;
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .footer-text {
+            color: #718096;
+            font-size: 13px;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+        }
+
+        .footer-links a {
+            color: #a0aec0;
+            text-decoration: none;
+            font-size: 13px;
+            transition: color 0.2s ease;
+        }
+
+        .footer-links a:hover {
+            color: #ffffff;
+        }
+        .author-panel {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #0d1726;
+            padding: 12px;
+            border-radius: 12px;
+            border: 1px solid #1a2e4c;
+        }
+
+        .author-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .author-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #3182ce 0%, #2a4365 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            font-size: 14px;
+            border: 2px solid #1e324f;
+            color: #ffffff;
+        }
+
+        .author-details {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .author-name {
+            color: #e2e8f0;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .author-role {
+            color: #718096;
+            font-size: 12px;
+        }
+
+        /* Interactive Action Toolbar */
+        .bookmark-btn {
+            background-color: #172a45;
+            border: 1px solid #1e324f;
+            color: #cbd5e0;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .bookmark-btn:hover {
+            background-color: #203a5f;
+            color: #ffffff;
+            transform: translateY(-2px);
+        }
+
+        .bookmark-btn.active {
+            color: #e53e3e;
+            background-color: rgba(229, 62, 62, 0.1);
+            border-color: #e53e3e;
+        }
+        .post-title {
+            font-size: 22px;
+            font-weight: 600;
+            line-height: 1.35;
+            letter-spacing: 0.3px;
+            color: #ffffff;
+        }
+        .back-btn {
+            background: none;
+            border: none;
+            color: #a0aec0;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        .back-btn:hover {
+            color: #ffffff;
+        }
+
+        .loading-view {
+            text-align: center;
+            padding: 60px;
+            font-size: 18px;
+            color: #a0aec0;
+        }
+
+        /* RESPONSIVE LAYOUT ENGINE (MOBILE AND DESKTOP VIEWPORTS) */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 65px;
+                right: 20px;
+                background-color: #132237;
+                border: 1px solid #1e324f;
+                flex-direction: column;
+                width: 200px;
+                padding: 16px;
+                border-radius: 12px;
+                z-index: 1001;
+                gap: 14px;
+            }
+
+            .nav-links.show {
+                display: flex;
+            }
+
+            .menu-btn {
+                display: block;
+            }
+        }
+
+        @media (min-width: 480px) {
+            .form-row-split {
+                flex-direction: row;
+            }
+            .newsletter-form {
+                flex-direction: row;
+            }
+        }
+
+        @media (min-width: 992px) {
+            .main-layout-grid {
+                grid-template-columns: 2.2fr 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="app-container">
+        
+        <!-- Contextual Navigation Header Block Component -->
+        <header class="navbar">
+            <div class="brand-logo">
+                <button class="back-btn" onclick="window.location.href='index.html'">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                    Gospel Intel
+                </button>
+            </div>
+
+            <nav class="nav-links" id="navLinks">
+                <a href="index.html">Home</a>
+                <a href="index.html">Trending</a>
+                <a href="#">Sermons</a>
+                <a href="#">Articles</a>
+                <a href="#">Contact</a>
+            </nav>
+            <div class="menu-btn" id="menuBtn">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+        </header>
+
+        <div id="loadingState" class="loading-view">Loading dynamic content logs...</div>
+
+        <!-- Main Layout Multi-Column Split Framework -->
+        <div class="main-layout-grid" id="mainContentGrid" style="display: none;">
+            
+            <!-- Left Grid Pipeline: Content Stream Cards -->
+            <div class="content-stream">
+                
+                <!-- Main Core Card Block -->
+                <main class="post-card">
+                    <div class="post-meta-header">
+                        <div class="meta-left">
+                            <span class="category-badge" id="categoryBadge">Category</span>
+                        </div>
+                    </div>
+                    
+                    <h1 class="post-title" id="postTitle">Sermon Title Placeholder</h1>
+                    
+                    <div class="author-panel">
+                        <div class="author-info">
+                            <div class="author-avatar" id="authorInitials">GI</div>
+                            <div class="author-details">
+                                <div class="author-name" id="authorName">Loading Author...</div>
+                                <div class="author-role" id="authorRole">Minister / Contributor</div>
+                            </div>
+                        </div>
+                        <!-- Bookmark Toggle Button -->
+                        <button class="bookmark-btn" id="bookmarkBtn" onclick="toggleBookmark()" title="Bookmark Post">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+                        </button>
+                    </div>
+
+                    <!-- Dynamic Featured Media Hero Area Asset -->
+                    <div class="media-container" id="mediaContainer">
+                        <!-- Swapped out transparently with either an <img> or an embed <iframe> inside JavaScript logic -->
+                        <img class="featured-image article-featured-img" id="featuredImg" src="" alt="Featured Media Asset">
+                    </div>
+
+                    <!-- Post Metadata Metric Tags Block Line -->
+                    <div class="post-meta-header">
+                        <div class="article-meta-tags">
+                            <span class="meta-item-tag"><i class="fa-solid fa-calendar-days"></i> <span id="postDate">...</span></span>
+                            <span class="meta-item-tag"><i class="fa-solid fa-clock"></i> <span id="readTime">...</span></span>
+                            <span class="meta-item-tag"><i class="fa-solid fa-eye"></i> <span id="viewCount">0</span> views</span>
+                        </div>
+                    </div>
+
+                    <!-- Scripture Reference Highlight Block -->
+                    <div id="scriptureBox" class="article-body" style="display:none; margin-bottom: 10px;">
+                        <blockquote id="scriptureText" style="margin: 0;"></blockquote>
+                    </div>
+
+                    <!-- Article Prose Engine Structural Elements -->
+                    <article class="article-body" id="articleBody">
+                        <!-- Populated by innerHTML -->
+                    </article>
+
+                    <!-- Sharing Utilities Toolbar Block Component -->
+                    <div class="share-section">
+                        <div class="share-title">Share this article</div>
+                        <div class="share-buttons">
+                            <button class="share-icon-btn fb facebook" title="Share on Facebook">
+                                <i class="fa-brands fa-facebook-f"></i> 
+                            </button>
+                            <button class="share-icon-btn tw twitter" title="Share on X">
+                                <i class="fa-brands fa-x-twitter"></i> 
+                            </button>
+                            <button class="share-icon-btn wa whatsapp" title="Share on WhatsApp">
+                                <i class="fa-brands fa-whatsapp"></i> 
+                            </button>
+                            <button class="share-icon-btn in linkedin" title="Share on LinkedIn">
+                                <i class="fa-brands fa-linkedin-in"></i> 
+                            </button>
+                            <button class="share-icon-btn copy" id="copyBtn" title="Copy URL Link Asset">
+                                <i class="fa-solid fa-link"></i>  
+                            </button>
+                        </div>
+                    </div>
+                                        <div class="author-panel">
+                        <img class="author-avatar" src="https://dl.dropboxusercontent.com/scl/fi/rr7taxo47wakfgdwdcna8/amos-avatar-4.png?rlkey=no5yf95o1ry4eh17leeyrx3hm&st=str7pmp4&dl=0" alt="Author Persona Face Picture Component">
+                        <div class="author-details-box">
+                            <h3>Amos Alfa</h3>
+                            <p>Passionate digital writer focused on the gospel, Dunamis Church updates, and the transformative teachings of Dr. Paul Enenche</p>
+                        </div>
+                    </div>
+                </main>
+
+                <!-- STANDALONE OUTSIDE SEPARATED CARDS -->
+                <section class="post-cta-container">
+                    <h3 class="cta-title">Looking for the Complete Archive?</h3>
+                    <p class="cta-text">Gain unedited access to the entire direct recorded manuscript, continuous ministerial logs, and full library resources mapping parameters.</p>
+                    <div class="pastor-attribution-banner">
+                        <div style="width:32px; height:32px; border-radius:50%; background-color:#3182ce; display:flex; align-items:center; justify-content:center; font-weight:bold; font-size:11px; color:#fff; flex-shrink: 0;">GI</div>
+                        <p style="font-size: 0.85rem; color: #a0aec0; margin:0;">
+                            Full archives hosted directly via 
+                            <a href="https://www.facebook.com/dunamisworldwide" target="_blank" rel="noopener noreferrer" class="pastor-link">Dunamis Int Gospel Center  Page</a>
+                        </p>
+                    </div>
+                </section>
+
+                <section class="newsletter-card">
+                    <div class="newsletter-header">
+                        <h4 class="newsletter-title">Stay Spiritually Equipped</h4>
+                        <p class="newsletter-subtitle">Receive direct weekly alerts containing unedited service outlines, summary drops, and upcoming global logs.</p>
+                    </div>
+                    <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Email registered to communication pipeline.');">
+                        <input type="email" placeholder="Enter your email address" class="form-input-control" style="flex: 1;" required>
+                        <button type="submit" class="form-submit-btn" style="white-space: nowrap; align-self: auto;">Subscribe Now</button>
+                    </form>
+                </section>
+            </div>
+
+            <!-- Right Grid Pipeline: Sidebar Context Stream Column Block -->
+            <aside class="sidebar-stream">
+                <!-- Related Publications Block Node Collection Panel -->
+                <div class="sidebar-card">
+                    <h2>Related Sermons</h2>
+                    <div id="relatedPostsContainer">
+                        <!-- Dynamic Sidebar Node Insertion -->
+                    </div>
+                </div>
+
+                <!-- Trending Metadata Query Taxonomy Cloud Block -->
+                <div class="sidebar-card">
+                    <h2>Trending Topics</h2>
+                    <div class="tag-cloud" style="border-top: none; padding-top: 0; margin-top: 0;">
+                        <span class="tag-item">Word</span>
+                        <span class="tag-item">Prayer</span>
+                        <span class="tag-item">Faith</span>
+                        <span class="tag-item">Grace</span>
+                        <span class="tag-item">Sermon</span>
+                        <span class="tag-item">Worship</span>
+                    </div>
+                </div>
+            </aside>
+
+        </div>
+    </div>
+
+    <!-- Layout Base Footer Element Block Component -->
+    <footer class="app-footer">
+        <div class="footer-content">
+            <h2 class="brand-logo" style="font-size: 20px;">Gospel Intel</h2>
+            <p class="footer-text" style="max-width: 400px; margin-bottom: 8px;">Modern responsive platform designed for speed, beauty, and engagement.</p>
+            <div class="footer-links">
+                <a href="index.html">About</a>
+                <a href="#">Privacy</a>
+                <a href="#">Terms</a>
+                <a href="#">Contact</a>
+            </div>
+            <p class="footer-text" style="margin-top: 12px; font-size: 11px; color: #4a5568;">&copy; 2026 Gospel Intel. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Firebase Core and Firestore SDK Installation Links -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+
+    <!-- Core App Interactive Integration Controller Log Script -->
+    <script>
+        // Firebase Configuration Core Setup Initialization
+        const firebaseConfig = {
+            apiKey: "AIzaSyBfoxEnVep0wX5V_KVS-cd8o5sUMvrFY4c",
+            authDomain: "primeintelmedia-e2fe3.firebaseapp.com",
+            databaseURL: "https://primeintelmedia-e2fe3-default-rtdb.firebaseio.com",
+            projectId: "primeintelmedia-e2fe3",
+            storageBucket: "primeintelmedia-e2fe3.firebasestorage.app",
+            messagingSenderId: "228866357632",
+            appId: "1:228866357632:web:72dc9942f1cd41d857a965",
+            measurementId: "G-G0HRRV932S"
+        };
+
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+
+        // Parse Parameters to target the Specific Post Record
+        const params = new URLSearchParams(window.location.search);
+        const id = params.get('id');
+
+        // Embed Link Engine Generators
+        function youtubeEmbed(url) {
+            let match = url.match(/(?:youtu\.be\/|v=)([^&]+)/);
+            return match ? `https://www.youtube.com/embed/${match[1]}` : url;
+        }
+
+        function facebookEmbed(url) {
+            return `https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(url)}&show_text=false`;
+        }
+
+        // Calculation of Read Time Metrics based on Content Length
+        function calculateReadTime(text) {
+            if (!text) return "1 min read";
+            const speed = 200; // Words Per Minute standard variable benchmark
+            const totalWords = text.trim().split(/\s+/).length;
+            const minutes = Math.ceil(totalWords / speed);
+            return `${minutes} min read`;
+        }
+
+        // Standard Firestore Date Field Conversion Strategy
+        function parseTimestamp(dateValue) {
+            if (!dateValue) return "Date Unknown";
+            if (dateValue.toDate && typeof dateValue.toDate === "function") {
+                return dateValue.toDate().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+            }
+            return new Date(dateValue).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+        }
+
+        // Initializer Controller Operation logic loop
+        if (id) {
+            // 1. Fire Atomic View Increment Field Request Transaction
+            db.collection('posts').doc(id).update({
+                views: firebase.firestore.FieldValue.increment(1)
+            }).catch(e => console.log("Silent View Counter Notification skipped (No views record column initialized yet):", e));
+
+            // 2. Query Record Dataset from collection storage
+            db.collection('posts').doc(id).get().then(doc => {
+                if (!doc.exists) {
+                    document.getElementById('loadingState').innerText = "Requested dynamic file publication could not be found.";
+                    return;
+                }
+
+                const post = doc.data();
+
+                // Compute real-time metric strings based on returned contents
+
+const generatedReadTime = calculateReadTime(post.content);
+const generatedPostDate = parseTimestamp(post.createdAt); // <-- Updated to your field name
+const displayedViewsCount = post.views ? post.views + 1 : 1;
+
+
+                // Bind elements to screen interfaces
+                document.getElementById('postTitle').innerText = post.title;
+                document.getElementById('categoryBadge').innerText = post.category || 'General';
+                document.getElementById('postDate').innerText = generatedPostDate;
+                document.getElementById('readTime').innerText = generatedReadTime;
+                document.getElementById('viewCount').innerText = displayedViewsCount.toLocaleString();
+                
+                // Bind Author Segment
+                const authorStr = post.author || "Gospel Intel Minister";
+                document.getElementById('authorName').innerText = authorStr;
+                document.getElementById('authorInitials').innerText = authorStr.split(" ").map(w => w[0]).join("").substring(0,2).toUpperCase();
+
+                // Scripture Processing Layout Setup
+                if (post.scripture) {
+                    document.getElementById('scriptureText').innerText = post.scripture;
+                    document.getElementById('scriptureBox').style.display = 'block';
+                }
+
+                // Primary Message Body Text Insertion processing line
+                document.getElementById('articleBody').innerHTML = post.content ? `<p>${post.content.replace(/\n\n/g, '</p><p>')}</p>` : '';
+
+                // Hero Image vs Video Rendering Logic Router Engine block
+                if (post.hasVideo && post.videoUrl) {
+                    let sourceLink = "";
+                    if (post.videoUrl.includes('youtube') || post.videoUrl.includes('youtu.be')) {
+                        sourceLink = youtubeEmbed(post.videoUrl);
+                    } else if (post.videoUrl.includes('facebook')) {
+                        sourceLink = facebookEmbed(post.videoUrl);
+                    }
+
+                    if (sourceLink) {
+                        document.getElementById('mediaContainer').innerHTML = `
+                            <div class="video-wrapper" style="position:relative; width:100%; height:100%;">
+                                <iframe src="${sourceLink}" allowfullscreen></iframe>
+                            </div>`;
+                    } else {
+                        fallbackToImage(post.imageUrl);
+                    }
+                } else {
+                    fallbackToImage(post.imageUrl);
+                }
+
+                // Flip Display Layout Switch Engine States
+                document.getElementById('loadingState').style.display = 'none';
+                document.getElementById('mainContentGrid').style.display = 'grid';
+
+                // 3. Initiate Sidebar Collection Retrieval Query Strategy
+                if (post.category) {
+                    retrieveRelatedCategorySermons(post.category, id);
+                }
+
+            }).catch(error => {
+                console.error("Critical Runtime System Error:", error);
+                document.getElementById('loadingState').innerText = "Fatal validation connectivity mapping issue occured while reading Firestore backend log registries.";
+            });
+
+        } else {
+            document.getElementById('loadingState').innerText = "Direct access refused. Missing standard resource identifier parameter reference code log link URL string tracking variables.";
+        }
+
+        // Image Handling Subroutine helper logic route
+        function fallbackToImage(url) {
+            const imgElement = document.getElementById('featuredImg');
+            imgElement.src = url || "https://dl.dropboxusercontent.com/scl/fi/11uhydbaxxcnemqmy2o76/1724942159759.jpg?rlkey=zbpbsfoq20bh6hxofjwr63h8s&st=pxrj8zq5&dl=0";
+        }
+
+        // Sidebar content fetching loop logic strategy configuration parameters
+        function retrieveRelatedCategorySermons(targetCategory, runningId) {
+            db.collection('posts')
+                .where('category', '==', targetCategory)
+                .limit(4) // Pull excess nodes in case base matches context running IDs
+                .get()
+                .then(snapshot => {
+                    let sideNodesString = "";
+                    let addedRecordsCounter = 0;
+
+                    snapshot.forEach(doc => {
+                        const row = doc.data();
+                        
+                        if (doc.id !== runningId && addedRecordsCounter < 3) {
+                            const inlineNodeDateStr = parseTimestamp(row.createdAt); // <-- Updated to your field name
+
+                            const elementCoverUrl = row.imageUrl || "https://dl.dropboxusercontent.com/scl/fi/11uhydbaxxcnemqmy2o76/1724942159759.jpg?rlkey=zbpbsfoq20bh6hxofjwr63h8s&st=pxrj8zq5&dl=0";
+                            
+                            sideNodesString += `
+                                <a class="related-post-node" href="postvie.html?id=${doc.id}">
+                                    <img class="related-thumb" src="${elementCoverUrl}" alt="Thumbnail Asset image representation">
+                                    <div class="related-meta">
+                                        <h4>${row.title}</h4>
+                                        <p>${inlineNodeDateStr}</p>
+                                    </div>
+                                </a>
+                            `;
+                            addedRecordsCounter++;
+                        }
+                    });
+
+                    // Render output structure safely inside DOM Node tracking trees
+                    document.getElementById('relatedPostsContainer').innerHTML = addedRecordsCounter > 0 ? sideNodesString : '<p style="font-size:12px; color:#718096;">No alternate related categories registered yet.</p>';
+                }).catch(err => console.error("Error gathering alternative content collection data records row values from network registry:", err));
+        }
+
+        /* Responsive Navigation Menu Toggle Mechanism Engine */
+        const menuBtn = document.getElementById('menuBtn');
+        const navLinks = document.getElementById('navLinks');
+
+        menuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('show');
+        });
+
+        /* Document Clipboard Link Management System */
+        document.getElementById('copyBtn').addEventListener('click', () => {
+            navigator.clipboard.writeText(window.location.href);
+            alert("Article link successfully copied to your device clipboard!");
+        });
+
+        /* Native Share Intent Generation Route Configurations */
+        const currentURL = encodeURIComponent(window.location.href);
+        const title = encodeURIComponent(document.title);
+
+        document.querySelector('.facebook').onclick = () => {
+            window.open(`https://www.facebook.com/sharer/sharer.php?u=${currentURL}`, '_blank');
+        };
+
+        document.querySelector('.twitter').onclick = () => {
+            window.open(`https://twitter.com/intent/tweet?url=${currentURL}&text=${title}`, '_blank');
+        };
+
+        document.querySelector('.whatsapp').onclick = () => {
+            window.open(`https://wa.me/?text=${title}%20${currentURL}`, '_blank');
+        };
+
+        document.querySelector('.linkedin').onclick = () => {
+            window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${currentURL}`, '_blank');
+        };
+
+        /* Reading Progress Scroll Indicator Engine Component Layout Construction */
+        const progressBar = document.createElement('div');
+        progressBar.style.position = 'fixed';
+        progressBar.style.top = '0';
+        progressBar.style.left = '0';
+        progressBar.style.height = '4px';
+        progressBar.style.background = '#3182ce';
+        progressBar.style.width = '0%';
+        progressBar.style.zIndex = '9999';
+        progressBar.style.boxShadow = '0 0 8px rgba(49, 130, 206, 0.6)';
+        document.body.appendChild(progressBar);
+
+        window.addEventListener('scroll', () => {
+            let scrollTop = document.documentElement.scrollTop;
+            let scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            let progress = (scrollTop / scrollHeight) * 100;
+            progressBar.style.width = progress + '%';
+        });
+
+        function toggleBookmark() {
+            document.getElementById('bookmarkBtn').classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
