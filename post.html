@@ -956,87 +956,96 @@
         }
 
         // Initializer Controller Operation logic loop
+
         if (id) {
-            // 1. Fire Atomic View Increment Field Request Transaction
-            db.collection('posts').doc(id).update({
+            const postRef = db.collection('posts').doc(id);
+
+            // 1. Fire Atomic View Increment Field Request Transaction first
+            postRef.update({
                 views: firebase.firestore.FieldValue.increment(1)
-            }).catch(e => console.log("Silent View Counter Notification skipped (No views record column initialized yet):", e));
-
-            // 2. Query Record Dataset from collection storage
-            db.collection('posts').doc(id).get().then(doc => {
-                if (!doc.exists) {
-                    document.getElementById('loadingState').innerText = "Requested dynamic file publication could not be found.";
-                    return;
-                }
-
-                const post = doc.data();
-
-                // Compute real-time metric strings based on returned contents
-
-const generatedReadTime = calculateReadTime(post.content);
-const generatedPostDate = parseTimestamp(post.createdAt); // <-- Updated to your field name
-const displayedViewsCount = post.views ? post.views + 1 : 1;
-
-
-                // Bind elements to screen interfaces
-                document.getElementById('postTitle').innerText = post.title;
-                document.getElementById('categoryBadge').innerText = post.category || 'General';
-                document.getElementById('postDate').innerText = generatedPostDate;
-                document.getElementById('readTime').innerText = generatedReadTime;
-                document.getElementById('viewCount').innerText = displayedViewsCount.toLocaleString();
-                
-                // Bind Author Segment
-                const authorStr = post.author || "Gospel Intel Minister";
-                document.getElementById('authorName').innerText = authorStr;
-                document.getElementById('authorInitials').innerText = authorStr.split(" ").map(w => w[0]).join("").substring(0,2).toUpperCase();
-
-                // Scripture Processing Layout Setup
-                if (post.scripture) {
-                    document.getElementById('scriptureText').innerText = post.scripture;
-                    document.getElementById('scriptureBox').style.display = 'block';
-                }
-
-                // Primary Message Body Text Insertion processing line
-                document.getElementById('articleBody').innerHTML = post.content ? `<p>${post.content.replace(/\n\n/g, '</p><p>')}</p>` : '';
-
-                // Hero Image vs Video Rendering Logic Router Engine block
-                if (post.hasVideo && post.videoUrl) {
-                    let sourceLink = "";
-                    if (post.videoUrl.includes('youtube') || post.videoUrl.includes('youtu.be')) {
-                        sourceLink = youtubeEmbed(post.videoUrl);
-                    } else if (post.videoUrl.includes('facebook')) {
-                        sourceLink = facebookEmbed(post.videoUrl);
+            })
+            .catch(e => {
+                // If this prints in your browser console, you need to update your Firestore Security Rules to allow writes!
+                console.error("View increment failed. Check Firestore Security Rules:", e);
+            })
+            .finally(() => {
+                // 2. Query Record Dataset AFTER the increment operation attempts to complete
+                postRef.get().then(doc => {
+                    if (!doc.exists) {
+                        document.getElementById('loadingState').innerText = "Requested dynamic file publication could not be found.";
+                        return;
                     }
 
-                    if (sourceLink) {
-                        document.getElementById('mediaContainer').innerHTML = `
-                            <div class="video-wrapper" style="position:relative; width:100%; height:100%;">
-                                <iframe src="${sourceLink}" allowfullscreen></iframe>
-                            </div>`;
+                    const post = doc.data();
+
+                    // Compute real-time metric strings based on returned contents
+                    const generatedReadTime = calculateReadTime(post.content);
+                    const generatedPostDate = parseTimestamp(post.createdAt);
+                    
+                    // FIXED: Read directly from the actual database value now that it's updated sequentially
+                    const displayedViewsCount = post.views || 0;
+
+                    // Bind elements to screen interfaces
+                    document.getElementById('postTitle').innerText = post.title;
+                    document.getElementById('categoryBadge').innerText = post.category || 'General';
+                    document.getElementById('postDate').innerText = generatedPostDate;
+                    document.getElementById('readTime').innerText = generatedReadTime;
+                    document.getElementById('viewCount').innerText = displayedViewsCount.toLocaleString();
+                    
+                    // Bind Author Segment
+                    const authorStr = post.author || "Gospel Intel Minister";
+                    document.getElementById('authorName').innerText = authorStr;
+                    document.getElementById('authorInitials').innerText = authorStr.split(" ").map(w => w[0]).join("").substring(0,2).toUpperCase();
+
+                    // Scripture Processing Layout Setup
+                    if (post.scripture) {
+                        document.getElementById('scriptureText').innerText = post.scripture;
+                        document.getElementById('scriptureBox').style.display = 'block';
+                    }
+
+                    // Primary Message Body Text Insertion processing line
+                    document.getElementById('articleBody').innerHTML = post.content ? `<p>${post.content.replace(/\n\n/g, '</p><p>')}</p>` : '';
+
+                    // Hero Image vs Video Rendering Logic Router Engine block
+                    if (post.hasVideo && post.videoUrl) {
+                        let sourceLink = "";
+                        if (post.videoUrl.includes('youtube') || post.videoUrl.includes('youtu.be')) {
+                            sourceLink = youtubeEmbed(post.videoUrl);
+                        } else if (post.videoUrl.includes('facebook')) {
+                            sourceLink = facebookEmbed(post.videoUrl);
+                        }
+
+                        if (sourceLink) {
+                            document.getElementById('mediaContainer').innerHTML = `
+                                <div class="video-wrapper" style="position:relative; width:100%; height:100%;">
+                                    <iframe src="${sourceLink}" allowfullscreen></iframe>
+                                </div>`;
+                        } else {
+                            fallbackToImage(post.imageUrl);
+                        }
                     } else {
                         fallbackToImage(post.imageUrl);
                     }
-                } else {
-                    fallbackToImage(post.imageUrl);
-                }
 
-                // Flip Display Layout Switch Engine States
-                document.getElementById('loadingState').style.display = 'none';
-                document.getElementById('mainContentGrid').style.display = 'grid';
+                    // Flip Display Layout Switch Engine States
+                    document.getElementById('loadingState').style.display = 'none';
+                    document.getElementById('mainContentGrid').style.display = 'grid';
 
-                // 3. Initiate Sidebar Collection Retrieval Query Strategy
-                if (post.category) {
-                    retrieveRelatedCategorySermons(post.category, id);
-                }
+                    // 3. Initiate Sidebar Collection Retrieval Query Strategy
+                    if (post.category) {
+                        retrieveRelatedCategorySermons(post.category, id);
+                    }
 
-            }).catch(error => {
-                console.error("Critical Runtime System Error:", error);
-                document.getElementById('loadingState').innerText = "Fatal validation connectivity mapping issue occured while reading Firestore backend log registries.";
+                }).catch(error => {
+                    console.error("Critical Runtime System Error:", error);
+                    document.getElementById('loadingState').innerText = "Fatal validation connectivity mapping issue occurred while reading Firestore backend log registries.";
+                });
             });
 
         } else {
             document.getElementById('loadingState').innerText = "Direct access refused. Missing standard resource identifier parameter reference code log link URL string tracking variables.";
         }
+
 
         // Image Handling Subroutine helper logic route
         function fallbackToImage(url) {
@@ -1063,7 +1072,7 @@ const displayedViewsCount = post.views ? post.views + 1 : 1;
                             const elementCoverUrl = row.imageUrl || "https://dl.dropboxusercontent.com/scl/fi/11uhydbaxxcnemqmy2o76/1724942159759.jpg?rlkey=zbpbsfoq20bh6hxofjwr63h8s&st=pxrj8zq5&dl=0";
                             
                             sideNodesString += `
-                                <a class="related-post-node" href="post.html?id=${doc.id}">
+                                <a class="related-post-node" href="postvie.html?id=${doc.id}">
                                     <img class="related-thumb" src="${elementCoverUrl}" alt="Thumbnail Asset image representation">
                                     <div class="related-meta">
                                         <h4>${row.title}</h4>
