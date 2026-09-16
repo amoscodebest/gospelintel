@@ -72,14 +72,14 @@
   <header class="header" data-header>
     <div class="container">
 
-      <a href="index.html" class="logo">
+      <a href="/" class="logo">
         <img src="gospel-intel-logo.jpg" width="119" height="37" alt="Gospel Intel Logo">
       </a>
 
       <nav class="navbar" data-navbar>
 
         <div class="navbar-top">
-          <a href="index.html" class="logo">
+          <a href="/" class="logo">
             <img src="gospel-intel-logo.jpg" width="119" height="37" alt="Gospel Intel Logo">
           </a>
 
@@ -90,7 +90,7 @@
 
         <ul class="navbar-list">
           <li>
-            <a href="index.html" class="navbar-link hover-1" data-nav-toggler>Home</a>
+            <a href="/" class="navbar-link hover-1" data-nav-toggler>Home</a>
           </li>
           <li>
             <a href="#featured" class="navbar-link hover-1" data-nav-toggler>Sermons</a>
@@ -226,14 +226,14 @@
         <img src="shadow-3.svg" width="500" height="1500" loading="lazy" alt="" class="feature-bg">
       </section>
 
-      <!-- SOCIAL MEDIA MEDIA GALLERY -->
+      <!-- SOCIAL MEDIA GALLERY -->
       <section class="section recent-post" id="social-gallery" aria-label="social channels">
         <div class="container">
           <div class="post-aside grid-list" style="width: 100%;">
 
             <!-- Facebook Card -->
             <div class="card aside-card insta-card">
-              <a href="index.html" class="logo">
+              <a href="/" class="logo">
                 <img src="gospel-intel-logo.jpg" width="119" height="37" loading="lazy" alt="Gospel Intel logo">
               </a>
 
@@ -260,7 +260,7 @@
 
             <!-- Instagram Card -->
             <div class="card aside-card insta-card">
-              <a href="index.html" class="logo">
+              <a href="/" class="logo">
                 <img src="gospel-intel-logo.jpg" width="119" height="37" loading="lazy" alt="Gospel Intel logo">
               </a>
 
@@ -301,7 +301,7 @@
         <div class="section footer-top">
 
           <div class="footer-brand">
-            <a href="index.html" class="logo">
+            <a href="/" class="logo">
               <img src="gospel-intel-logo.jpg" width="119" height="37" loading="lazy" alt="Gospel Intel logo">
             </a>
 
@@ -423,9 +423,13 @@
       return text.length > limit ? text.substring(0, limit) + '...' : text;
   }
 
+  // Target Route Destination (using clean post-template route)
+  const POST_ROUTE = 'post-template.html';
+
   // Layout Renderers
   function renderSermon(id, post) {
     const fallbackImg = 'https://dl.dropboxusercontent.com/scl/fi/11uhydbaxxcnemqmy2o76/1724942159759.jpg?rlkey=zbpbsfoq20bh6hxofjwr63h8s&st=pxrj8zq5&dl=0';
+    const postUrl = `${POST_ROUTE}?id=${id}`;
     return `
       <li>
         <div class="card feature-card">
@@ -436,7 +440,7 @@
           <div class="card-content">
             <div class="card-wrapper">
               <div class="card-tag">
-                <a href="post.html?id=${id}" class="span hover-2">${post.category || 'Sermon'}</a>
+                <a href="${postUrl}" class="span hover-2">${post.category || 'Sermon'}</a>
               </div>
               <div class="wrapper">
                 <span class="span">${post.scripture || ''}</span>
@@ -444,7 +448,7 @@
             </div>
 
             <h3 class="headline headline-3">
-              <a href="post.html?id=${id}" class="card-title hover-2">${post.title || 'Untitled Sermon'}</a>
+              <a href="${postUrl}" class="card-title hover-2">${post.title || 'Untitled Sermon'}</a>
             </h3>
 
             <div class="card-wrapper">
@@ -453,7 +457,7 @@
                   <p class="card-subtitle">${post.author || 'Gospel Intel Staff'}</p>
                 </div>
               </div>
-              <a href="post.html?id=${id}" class="card-btn">Read & Watch</a>
+              <a href="${postUrl}" class="card-btn">Read & Watch</a>
             </div>
           </div>
         </div>
@@ -464,6 +468,7 @@
   function renderActivity(id, post) {
     const summaryText = truncateText(post.summary || post.content, 100) || 'Click below to read full service details.';
     const fallbackImg = 'https://dl.dropboxusercontent.com/scl/fi/11uhydbaxxcnemqmy2o76/1724942159759.jpg?rlkey=zbpbsfoq20bh6hxofjwr63h8s&st=pxrj8zq5&dl=0';
+    const postUrl = `${POST_ROUTE}?id=${id}`;
     return `
       <li>
         <div class="recent-post-card">
@@ -472,17 +477,17 @@
           </figure>
 
           <div class="card-content">
-            <a href="post.html?id=${id}" class="card-badge">${post.category || 'Activities'}</a>
+            <a href="${postUrl}" class="card-badge">${post.category || 'Activities'}</a>
 
             <h3 class="headline headline-3 card-title">
-              <a href="post.html?id=${id}" class="link hover-2">${post.title || 'Untitled Activity'}</a>
+              <a href="${postUrl}" class="link hover-2">${post.title || 'Untitled Activity'}</a>
             </h3>
 
             <p class="card-text">${summaryText}</p>
 
             <div class="card-wrapper">
               <div class="card-tag">
-                <a href="post.html?id=${id}" class="span hover-2">${post.author || 'Gospel Intel Staff'}</a>
+                <a href="${postUrl}" class="span hover-2">${post.author || 'Gospel Intel Staff'}</a>
               </div>
 
               <div class="wrapper">
@@ -498,6 +503,7 @@
 
   function renderDefault(id, post) {
     const fallbackImg = 'https://dl.dropboxusercontent.com/scl/fi/11uhydbaxxcnemqmy2o76/1724942159759.jpg?rlkey=zbpbsfoq20bh6hxofjwr63h8s&st=pxrj8zq5&dl=0';
+    const postUrl = `${POST_ROUTE}?id=${id}`;
     return `
       <li>
         <div class="popular-card">
@@ -507,7 +513,7 @@
 
           <div class="card-content">
             <h4 class="headline headline-4 card-title">
-              <a href="post.html?id=${id}" class="link hover-2">${post.title || 'Untitled Post'}</a>
+              <a href="${postUrl}" class="link hover-2">${post.title || 'Untitled Post'}</a>
             </h4>
 
             <div class="warpper">
@@ -522,7 +528,7 @@
 
   // Build HTML string based on processed posts array
   function buildHTML(category, posts) {
-      if(posts.length === 0) {
+      if (posts.length === 0) {
           return `<div class="empty" style="color: #a0aec0; padding: 20px 0;">No entries logged under ${category} yet.</div>`;
       }
       let html = '';
@@ -535,7 +541,7 @@
   }
 
   // Smart Load Engine with Caching and Active Sync Updating
-  function load(category, container){
+  function load(category, container) {
       const cacheKey = `gospel_intel_${category}`;
       const cachedData = localStorage.getItem(cacheKey);
 
