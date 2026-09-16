@@ -6,21 +6,6 @@
     {
       "source": "/post",
       "destination": "/api/post"
-    },
-    {
-      "source": "/post.html",
-      "destination": "/api/post"
-    }
-  ],
-  "headers": [
-    {
-      "source": "/api/post",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "s-maxage=86400, stale-while-revalidate=3600"
-        }
-      ]
     }
   ]
 }
