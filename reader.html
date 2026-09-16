@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: https://ogp.me/ns#">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Primary Meta Tags -->
+    <title id="metaTitle">Gospel Intel | Global Church News, Theology & Christian Insights</title>
+    <meta name="title" id="metaTitleTag" content="Gospel Intel | Global Church News, Theology & Christian Insights">
+    <meta name="description" id="metaDescription" content="Read full Christian insights, theological essays, faith & tech analysis, devotionals, and pastoral leadership updates on Gospel Intel.">
+    <meta name="keywords" content="Christian News, Theology, Faith, Global Church, Devotionals, Pastoral Leadership, Gospel Intel, Church Tech">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="English">
+    <meta name="author" content="Gospel Intel Media Desk">
+    
+    <!-- Canonical Link -->
+    <link rel="canonical" id="metaCanonical" href="https://gospelintel.vercel.app/reader.html">
+
+    <!-- Open Graph / Facebook / WhatsApp / LinkedIn Meta Tags -->
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="Gospel Intel">
+    <meta property="og:url" id="ogUrl" content="https://gospelintel.vercel.app/reader.html">
+    <meta property="og:title" id="ogTitle" content="Gospel Intel | Actionable Christian Insights & News">
+    <meta property="og:description" id="ogDescription" content="Empowering the body of Christ with timely global church coverage, theological depth, and digital ministry insights.">
+    <meta property="og:image" id="ogImage" content="https://images.unsplash.com/photo-1438232992991-995b7058bbb3?auto=format&fit=crop&w=1200&q=80">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" id="ogImageAlt" content="Gospel Intel Cover Image">
+    <meta property="og:locale" content="en_US">
+
+    <!-- Twitter / X Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@gospelintel">
+    <meta name="twitter:creator" content="@gospelintel">
+    <meta name="twitter:url" id="twitterUrl" content="https://gospelintel.vercel.app/reader.html">
+    <meta name="twitter:title" id="twitterTitle" content="Gospel Intel | Actionable Faith Insights">
+    <meta name="twitter:description" id="twitterDescription" content="Read breaking updates from the global church, pastoral leadership tools, and daily devotional reflections.">
+    <meta name="twitter:image" id="twitterImage" content="https://images.unsplash.com/photo-1438232992991-995b7058bbb3?auto=format&fit=crop&w=1200&q=80">
+
+    <!-- Schema.org JSON-LD Structured Data Container -->
+    <script type="application/ld+json" id="schemaStructuredData">
+    {
+      "@context": "https://schema.org",
+      "@type": "NewsArticle",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://gospelintel.vercel.app/reader.html"
+      },
+      "headline": "Gospel Intel | Global Church News, Theology & Christian Insights",
+      "image": [
+        "https://images.unsplash.com/photo-1438232992991-995b7058bbb3?auto=format&fit=crop&w=1200&q=80"
+      ],
+      "datePublished": "2026-01-01T08:00:00+00:00",
+      "dateModified": "2026-01-01T08:00:00+00:00",
+      "author": {
+        "@type": "Organization",
+        "name": "Gospel Intel Staff",
+        "url": "https://gospelintel.vercel.app"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Gospel Intel",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://gospelintel.vercel.app/assets/logo.png"
+        }
+      },
+      "description": "Empowering the body of Christ with timely global church coverage, theological depth, and digital ministry insights."
+    }
+    </script>
+
+    <!-- Google Fonts & FontAwesome -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        :root {
+            --bg-body: #fafaf9;
+            --bg-card: #ffffff;
+            --bg-header: rgba(255, 255, 255, 0.94);
+            --bg-sidebar: #ffffff;
+            --text-main: #1c1917;
+            --text-muted: #78716c;
+            --border-color: #e7e5e4;
+            
+            --accent-color: #d97706; /* Kingdom Amber/Gold */
+            --accent-hover: #b45309;
+            --accent-glow: rgba(217, 119, 6, 0.12);
+            --navy-primary: #1e1b4b;
+            
+            --badge-bg: #fef3c7;
+            --badge-text: #92400e;
+            --shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
+            --radius: 12px;
+            --skeleton-bg: #e7e5e4;
+        }
+
+        [data-theme="dark"] {
+            --bg-body: #0c0a09;
+            --bg-card: #161412;
+            --bg-header: rgba(22, 20, 18, 0.94);
+            --bg-sidebar: #161412;
+            --text-main: #f5f5f4;
+            --text-muted: #a8a29e;
+            --border-color: #27272a;
+            
+            --accent-color: #f59e0b;
+            --accent-hover: #d97706;
+            --accent-glow: rgba(245, 158, 11, 0.15);
+            --navy-primary: #312e81;
+            
+            --badge-bg: rgba(245, 158, 11, 0.15);
+            --badge-text: #fcd34d;
+            --shadow: 0 4px 25px -2px rgba(0, 0, 0, 0.4);
+            --skeleton-bg: #27272a;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.7;
+            padding-bottom: 60px;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Cinzel', serif;
+            letter-spacing: -0.01em;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* Header Navigation */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: var(--bg-header);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-color);
+            padding: 0.85rem 1.5rem;
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            align-items: center;
+        }
+
+        .brand-logo {
+            font-family: 'Cinzel', serif;
+            font-size: 1.6rem;
+            font-weight: 500;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .brand-logo span {
+            color: var(--accent-color);
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 8px;
+        }
+
+        .icon-btn {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.05rem;
+        }
+
+        .icon-btn:hover {
+            border-color: var(--accent-color);
+            color: var(--accent-color);
+        }
+
+        /* Reading Progress Bar */
+        .progress-container {
+            position: fixed;
+            top: 61px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: transparent;
+            z-index: 99;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: var(--accent-color);
+            width: 0%;
+        }
+
+        /* Article Container Layout */
+        .reader-layout {
+            max-width: 860px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .back-nav {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--accent-color);
+            margin-bottom: 1.5rem;
+            cursor: pointer;
+        }
+
+        .back-nav:hover {
+            text-decoration: underline;
+        }
+
+        .badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 4px 12px;
+            border-radius: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            display: inline-block;
+            margin-bottom: 0.75rem;
+        }
+
+        .article-title {
+            font-size: 2.2rem;
+            font-weight: 800;
+            line-height: 1.25;
+            margin-bottom: 1.25rem;
+        }
+
+        .author-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 0;
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .author-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .author-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--accent-color);
+        }
+
+        .author-details .name {
+            font-weight: 700;
+            font-size: 0.95rem;
+        }
+
+        .author-details .meta {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .share-toolbar {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Cover Image Box */
+        .cover-box {
+            width: 100%;
+            max-height: 480px;
+            border-radius: var(--radius);
+            overflow: hidden;
+            margin-bottom: 2.25rem;
+            box-shadow: var(--shadow);
+            background-color: var(--skeleton-bg);
+        }
+
+        .cover-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Article Body Content Styling */
+        .article-content {
+            font-family: 'Source Serif 4', Georgia, serif;
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: var(--text-main);
+            margin-bottom: 3rem;
+        }
+
+        .article-content p {
+            margin-bottom: 1.5rem;
+        }
+
+        .article-content h2, .article-content h3 {
+            font-family: 'Cinzel', serif;
+            margin: 2rem 0 1rem;
+            color: var(--text-main);
+        }
+
+        .article-content blockquote {
+            border-left: 4px solid var(--accent-color);
+            padding-left: 1.25rem;
+            margin: 1.75rem 0;
+            font-style: italic;
+            color: var(--text-muted);
+            font-size: 1.2rem;
+        }
+
+        /* Scripture Callout Card inside Article */
+        .scripture-card {
+            background: linear-gradient(135deg, var(--bg-card) 0%, var(--accent-glow) 100%);
+            border: 1px solid var(--border-color);
+            border-left: 4px solid var(--accent-color);
+            border-radius: var(--radius);
+            padding: 1.25rem 1.5rem;
+            margin: 2rem 0;
+            box-shadow: var(--shadow);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        .scripture-quote {
+            font-family: 'Cinzel', serif;
+            font-style: italic;
+            font-size: 1.1rem;
+            color: var(--text-main);
+            margin-bottom: 0.5rem;
+        }
+
+        .scripture-ref {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            text-transform: uppercase;
+        }
+
+        /* Reactions & Stats Bar */
+        .reactions-bar {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            padding: 1rem 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 3rem;
+            box-shadow: var(--shadow);
+        }
+
+        .action-group {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .react-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+
+        .react-btn:hover, .react-btn.active {
+            color: var(--accent-color);
+        }
+
+        /* Comments Section */
+        .comments-section {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            padding: 2rem;
+            box-shadow: var(--shadow);
+        }
+
+        .comments-heading {
+            font-size: 1.25rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .comment-form {
+            margin-bottom: 2rem;
+        }
+
+        .comment-input-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            background: var(--bg-body);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            color: var(--text-main);
+            font-size: 0.9rem;
+            outline: none;
+            font-family: inherit;
+        }
+
+        .form-control:focus {
+            border-color: var(--accent-color);
+        }
+
+        textarea.form-control {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .btn-submit {
+            background: var(--accent-color);
+            color: #ffffff;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            font-weight: 700;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+
+        .btn-submit:hover {
+            background: var(--accent-hover);
+        }
+
+        .comment-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+        }
+
+        .comment-item {
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .comment-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .comment-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 0.4rem;
+        }
+
+        .comment-author {
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+
+        .comment-date {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        .comment-body {
+            font-size: 0.925rem;
+            color: var(--text-main);
+            line-height: 1.5;
+        }
+
+        /* Loading Spinner */
+        .loading-state {
+            text-align: center;
+            padding: 5rem 1rem;
+            color: var(--text-muted);
+        }
+
+        .loading-state i {
+            font-size: 2.5rem;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+        }
+
+        @media (max-width: 600px) {
+            .article-title { font-size: 1.6rem; }
+            .comment-input-row { grid-template-columns: 1fr; }
+            .author-bar { flex-direction: column; align-items: flex-start; }
+            .reader-layout { padding: 0 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Scroll Reading Progress Bar -->
+    <div class="progress-container">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <!-- Header Navigation -->
+    <header>
+        <a href="index.html" class="back-nav" style="margin-bottom: 0;">
+            <i class="fa-solid fa-arrow-left"></i> Home
+        </a>
+
+        <a href="index.html" class="brand-logo">
+            <i class="fa-solid fa-cross" style="color: var(--accent-color);"></i> Gospel <span>Intel</span>
+        </a>
+
+        <div class="header-right">
+            <button class="icon-btn" onclick="shareArticle()" aria-label="Share article">
+                <i class="fa-solid fa-share-nodes"></i>
+            </button>
+            <button class="icon-btn" id="themeToggle" aria-label="Toggle dark mode">
+                <i class="fa-solid fa-moon" id="themeIcon"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Reader View -->
+    <main class="reader-layout" id="readerContainer">
+        
+        <div class="loading-state" id="loadingState">
+            <i class="fa-solid fa-spinner fa-spin"></i>
+            <p>Fetching story from Gospel Intel database...</p>
+        </div>
+
+        <article id="articleMain" style="display: none;">
+            
+            <a href="index.html" class="back-nav">
+                <i class="fa-solid fa-arrow-left"></i> Back to Kingdom News
+            </a>
+
+            <div>
+                <span class="badge" id="artCategory">Global Church</span>
+            </div>
+
+            <h1 class="article-title" id="artTitle">Article Headline Loading...</h1>
+
+            <div class="author-bar">
+                <div class="author-info">
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80" alt="Author" class="author-avatar" id="artAuthorAvatar">
+                    <div class="author-details">
+                        <div class="name" id="artAuthorName">Gospel Intel Desk</div>
+                        <div class="meta">
+                            <span id="artDate">Recently Published</span> • <span id="artReadTime">5 mins read</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="share-toolbar">
+                    <button class="icon-btn" onclick="copyArticleLink()" title="Copy Link">
+                        <i class="fa-regular fa-copy"></i>
+                    </button>
+                    <button class="icon-btn" onclick="shareToTwitter()" title="Share on Twitter">
+                        <i class="fa-brands fa-x-twitter"></i>
+                    </button>
+                    <button class="icon-btn" onclick="shareToWhatsApp()" title="Share on WhatsApp">
+                        <i class="fa-brands fa-whatsapp"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="cover-box" id="artCoverBox">
+                <img src="" alt="Cover" id="artCoverImg">
+            </div>
+
+            <!-- Main Body Content -->
+            <div class="article-content" id="artBody"></div>
+
+            <!-- Reactions Bar -->
+            <div class="reactions-bar">
+                <div class="action-group">
+                    <button class="react-btn" id="likeBtn" onclick="toggleLike()">
+                        <i class="fa-regular fa-heart" id="likeIcon"></i> <span id="likeCount">0</span>
+                    </button>
+                    <button class="react-btn" onclick="scrollToComments()">
+                        <i class="fa-regular fa-comment"></i> <span id="commentCount">0</span>
+                    </button>
+                </div>
+                <button class="react-btn" onclick="shareArticle()">
+                    <i class="fa-solid fa-share-nodes"></i> Share Story
+                </button>
+            </div>
+
+            <!-- Comments Section -->
+            <section class="comments-section" id="commentsArea">
+                <h3 class="comments-heading">
+                    <span>Reader Reflections</span>
+                    <span style="font-size: 0.9rem; color: var(--text-muted);" id="commentsHeaderCount">0 Comments</span>
+                </h3>
+
+                <form class="comment-form" id="commentForm">
+                    <div class="comment-input-row">
+                        <input type="text" id="commenterName" class="form-control" placeholder="Your Name" required>
+                        <input type="email" id="commenterEmail" class="form-control" placeholder="Your Email (Optional)">
+                    </div>
+                    <div style="margin-bottom: 1rem;">
+                        <textarea id="commentText" class="form-control" placeholder="Share your thoughts or prayer reflections..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn-submit" id="postCommentBtn">Post Comment</button>
+                </form>
+
+                <div class="comment-list" id="commentList">
+                    <p style="color: var(--text-muted); font-size: 0.875rem;" id="noCommentsMsg">No reflections posted yet. Be the first to share your thoughts!</p>
+                </div>
+            </section>
+
+        </article>
+
+    </main>
+
+    <!-- Basic UI Scripts -->
+    <script>
+        // Theme Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = document.getElementById('themeIcon');
+        const currentTheme = localStorage.getItem('gospel_theme') || 'light';
+
+        if (currentTheme === 'dark') {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            themeIcon.classList.replace('fa-moon', 'fa-sun');
+        }
+
+        themeToggle.addEventListener('click', () => {
+            const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+            if (isDark) {
+                document.documentElement.removeAttribute('data-theme');
+                themeIcon.classList.replace('fa-sun', 'fa-moon');
+                localStorage.setItem('gospel_theme', 'light');
+            } else {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                themeIcon.classList.replace('fa-moon', 'fa-sun');
+                localStorage.setItem('gospel_theme', 'dark');
+            }
+        });
+
+        // Reading Scroll Progress Indicator
+        window.onscroll = function() {
+            let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            let scrolled = (winScroll / height) * 100;
+            document.getElementById("progressBar").style.width = scrolled + "%";
+        };
+
+        // Scroll to Comments
+        function scrollToComments() {
+            document.getElementById('commentsArea').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Base domain & URL parameter helpers
+        const BASE_DOMAIN = "https://gospelintel.vercel.app";
+        const urlParams = new URLSearchParams(window.location.search);
+        const articleId = urlParams.get('id');
+
+        // Helper: Generates Vercel Edge Function share URL
+        function getShareableUrl() {
+            return articleId ? `${BASE_DOMAIN}/share/${articleId}` : `${BASE_DOMAIN}/reader.html`;
+        }
+
+        // Social Sharing Handlers (Constructs Edge Function links for WhatsApp/Facebook/X)
+        function copyArticleLink() {
+            navigator.clipboard.writeText(getShareableUrl());
+            alert("Article link copied for social sharing!");
+        }
+
+        function shareToTwitter() {
+            const title = encodeURIComponent(document.title);
+            const url = encodeURIComponent(getShareableUrl());
+            window.open(`https://twitter.com/intent/tweet?text=${title}&url=${url}`, '_blank');
+        }
+
+        function shareToWhatsApp() {
+            const title = encodeURIComponent(document.title);
+            const url = encodeURIComponent(getShareableUrl());
+            window.open(`https://api.whatsapp.com/send?text=${title}%20${url}`, '_blank');
+        }
+
+        function shareArticle() {
+            if (navigator.share) {
+                navigator.share({
+                    title: document.title,
+                    url: getShareableUrl()
+                });
+            } else {
+                copyArticleLink();
+            }
+        }
+    </script>
+
+    <!-- Firebase SDK & Dynamic Meta Injector Script -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import { 
+            getFirestore, doc, getDoc, updateDoc, increment, collection, addDoc, query, orderBy, getDocs, serverTimestamp 
+        } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+        // Firebase Credentials
+        const firebaseConfig = {
+            apiKey: "AIzaSyBfoxEnVep0wX5V_KVS-cd8o5sUMvrFY4c",
+            authDomain: "primeintelmedia-e2fe3.firebaseapp.com",
+            databaseURL: "https://primeintelmedia-e2fe3-default-rtdb.firebaseio.com",
+            projectId: "primeintelmedia-e2fe3",
+            storageBucket: "primeintelmedia-e2fe3.firebasestorage.app",
+            messagingSenderId: "228866357632",
+            appId: "1:228866357632:web:72dc9942f1cd41d857a965",
+            measurementId: "G-G0HRRV932S"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        let isLiked = false;
+        let currentLikes = 0;
+
+        // Dropbox Link Converter Helper
+        function formatDropboxUrl(url) {
+            if (!url) return 'https://images.unsplash.com/photo-1438232992991-995b7058bbb3?auto=format&fit=crop&w=1200&q=80';
+            let cleanUrl = url.trim();
+            if (cleanUrl.includes('dropbox.com')) {
+                cleanUrl = cleanUrl.replace('dl=0', 'raw=1').replace('dl=1', 'raw=1');
+                if (!cleanUrl.includes('raw=1')) {
+                    cleanUrl += cleanUrl.includes('?') ? '&raw=1' : '?raw=1';
+                }
+            }
+            return cleanUrl;
+        }
+
+        // Dynamic Meta, Open Graph, Twitter & Canonical Injector Function
+        function updateArticleSEO(data, id) {
+            const currentFullUrl = `${BASE_DOMAIN}/reader.html?id=${id}`;
+            const shareUrl = `${BASE_DOMAIN}/share/${id}`;
+            const cleanTitle = `${data.title} | Gospel Intel`;
+            const cleanDesc = data.excerpt || "Read full story on Gospel Intel - Global Church News & Actionable Faith Insights.";
+            const imageUrl = formatDropboxUrl(data.imageUrl);
+
+            // Update Page Title, Meta Title, Description & Canonical URL
+            document.title = cleanTitle;
+            document.getElementById('metaTitleTag').setAttribute('content', cleanTitle);
+            document.getElementById('metaDescription').setAttribute('content', cleanDesc);
+            document.getElementById('metaCanonical').setAttribute('href', currentFullUrl);
+
+            // Update Open Graph (WhatsApp / Facebook / LinkedIn)
+            document.getElementById('ogUrl').setAttribute('content', shareUrl);
+            document.getElementById('ogTitle').setAttribute('content', cleanTitle);
+            document.getElementById('ogDescription').setAttribute('content', cleanDesc);
+            document.getElementById('ogImage').setAttribute('content', imageUrl);
+            document.getElementById('ogImageAlt').setAttribute('content', data.title);
+
+            // Update Twitter / X
+            document.getElementById('twitterUrl').setAttribute('content', shareUrl);
+            document.getElementById('twitterTitle').setAttribute('content', cleanTitle);
+            document.getElementById('twitterDescription').setAttribute('content', cleanDesc);
+            document.getElementById('twitterImage').setAttribute('content', imageUrl);
+
+            // Update JSON-LD Schema.org Data
+            const pubDate = data.createdAt?.toDate ? data.createdAt.toDate().toISOString() : new Date().toISOString();
+            const modDate = data.updatedAt?.toDate ? data.updatedAt.toDate().toISOString() : pubDate;
+
+            const schemaData = {
+                "@context": "https://schema.org",
+                "@type": "NewsArticle",
+                "mainEntityOfPage": {
+                    "@type": "WebPage",
+                    "@id": currentFullUrl
+                },
+                "headline": data.title,
+                "image": [imageUrl],
+                "datePublished": pubDate,
+                "dateModified": modDate,
+                "author": {
+                    "@type": "Person",
+                    "name": data.author?.name || "Gospel Intel Desk"
+                },
+                "publisher": {
+                    "@type": "Organization",
+                    "name": "Gospel Intel",
+                    "logo": {
+                        "@type": "ImageObject",
+                        "url": `${BASE_DOMAIN}/assets/logo.png`
+                    }
+                },
+                "description": cleanDesc
+            };
+
+            document.getElementById('schemaStructuredData').textContent = JSON.stringify(schemaData);
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            if (!articleId) {
+                document.getElementById('loadingState').innerHTML = `<p style="color: var(--accent-color);">Invalid article URL. Please return to <a href="index.html" style="text-decoration: underline;">Home Page</a>.</p>`;
+                return;
+            }
+            loadArticleData();
+            loadComments();
+        });
+
+        // 1. Fetch Article from Firestore
+        async function loadArticleData() {
+            try {
+                const docRef = doc(db, "articles", articleId);
+                const docSnap = await getDoc(docRef);
+
+                if (docSnap.exists()) {
+                    const data = docSnap.data();
+
+                    // Inject Dynamic SEO, Open Graph & Canonical Tag
+                    updateArticleSEO(data, articleId);
+
+                    document.getElementById('artCategory').textContent = data.category || 'Kingdom News';
+                    document.getElementById('artTitle').textContent = data.title;
+                    document.getElementById('artAuthorName').textContent = data.author?.name || 'Gospel Intel Staff';
+                    if (data.author?.avatar) {
+                        document.getElementById('artAuthorAvatar').src = data.author.avatar;
+                    }
+                    document.getElementById('artReadTime').textContent = data.readTime || '5 mins read';
+                    
+                    if (data.createdAt) {
+                        const dateObj = data.createdAt.toDate ? data.createdAt.toDate() : new Date(data.createdAt);
+                        document.getElementById('artDate').textContent = dateObj.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+                    }
+
+                    // Cover Image Rendering
+                    if (data.imageUrl) {
+                        document.getElementById('artCoverImg').src = formatDropboxUrl(data.imageUrl);
+                    } else {
+                        document.getElementById('artCoverBox').style.display = 'none';
+                    }
+
+                    // Content Body Rendering
+                    document.getElementById('artBody').innerHTML = data.content;
+
+                    // Likes Handling
+                    currentLikes = data.stats?.likes || 0;
+                    document.getElementById('likeCount').textContent = currentLikes;
+
+                    // Reveal Content Body
+                    document.getElementById('loadingState').style.display = 'none';
+                    document.getElementById('articleMain').style.display = 'block';
+
+                    // Increment Page Views Count
+                    updateDoc(docRef, { "stats.views": increment(1) }).catch(() => {});
+
+                } else {
+                    document.getElementById('loadingState').innerHTML = `<p>Story not found in database. It may have been unassigned or deleted.</p>`;
+                }
+            } catch (err) {
+                console.error("Error fetching story:", err);
+                document.getElementById('loadingState').innerHTML = `<p>Error loading article. Please check your internet connection.</p>`;
+            }
+        }
+
+        // 2. Handle Article Like Toggle
+        window.toggleLike = async function() {
+            const likeIcon = document.getElementById('likeIcon');
+            const likeBtn = document.getElementById('likeBtn');
+            const likeCountEl = document.getElementById('likeCount');
+
+            const docRef = doc(db, "articles", articleId);
+
+            if (!isLiked) {
+                isLiked = true;
+                currentLikes++;
+                likeIcon.classList.replace('fa-regular', 'fa-solid');
+                likeBtn.classList.add('active');
+                likeCountEl.textContent = currentLikes;
+                await updateDoc(docRef, { "stats.likes": increment(1) });
+            } else {
+                isLiked = false;
+                currentLikes--;
+                likeIcon.classList.replace('fa-solid', 'fa-regular');
+                likeBtn.classList.remove('active');
+                likeCountEl.textContent = currentLikes;
+                await updateDoc(docRef, { "stats.likes": increment(-1) });
+            }
+        };
+
+        // 3. Load Article Comments
+        async function loadComments() {
+            try {
+                const q = query(
+                    collection(db, "articles", articleId, "comments"),
+                    orderBy("createdAt", "desc")
+                );
+                const snapshot = await getDocs(q);
+                const commentList = document.getElementById('commentList');
+
+                if (!snapshot.empty) {
+                    commentList.innerHTML = "";
+                    document.getElementById('commentCount').textContent = snapshot.size;
+                    document.getElementById('commentsHeaderCount').textContent = `${snapshot.size} Reflections`;
+
+                    snapshot.forEach((docSnap) => {
+                        const item = docSnap.data();
+                        const dateStr = item.createdAt ? new Date(item.createdAt.toDate()).toLocaleDateString() : 'Just now';
+
+                        commentList.innerHTML += `
+                            <div class="comment-item">
+                                <div class="comment-header">
+                                    <span class="comment-author">${item.name}</span>
+                                    <span class="comment-date">${dateStr}</span>
+                                </div>
+                                <div class="comment-body">${item.text}</div>
+                            </div>
+                        `;
+                    });
+                } else {
+                    document.getElementById('commentCount').textContent = "0";
+                    document.getElementById('commentsHeaderCount').textContent = "0 Comments";
+                }
+            } catch (err) {
+                console.warn("Comments loader:", err);
+            }
+        }
+
+        // 4. Submit New Reflection/Comment
+        document.getElementById('commentForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const submitBtn = document.getElementById('postCommentBtn');
+            const name = document.getElementById('commenterName').value.trim();
+            const text = document.getElementById('commentText').value.trim();
+
+            if (name && text) {
+                submitBtn.disabled = true;
+                submitBtn.textContent = "Posting...";
+
+                try {
+                    await addDoc(collection(db, "articles", articleId, "comments"), {
+                        name: name,
+                        text: text,
+                        createdAt: serverTimestamp()
+                    });
+
+                    await updateDoc(doc(db, "articles", articleId), {
+                        "stats.comments": increment(1)
+                    });
+
+                    document.getElementById('commentText').value = "";
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = "Post Comment";
+                    loadComments();
+                } catch (err) {
+                    alert("Unable to post comment. Please try again.");
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = "Post Comment";
+                }
+            }
+        });
+    </script>
+</body>
+</html>

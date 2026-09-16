@@ -1,0 +1,1933 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Core SEO & Faith Metadata -->
+    <title>Gospel Intel | Global Church News, Theology & Christian Insights</title>
+    <meta name="description" content="Stay informed with Gospel Intel. Get breaking news on the global church, theological analysis, faith & tech trends, devotionals, and pastoral leadership.">
+    <link rel="canonical" href="https://gospelintel.org">
+    
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://gospelintel.org">
+    <meta property="og:title" content="Gospel Intel | Actionable Christian Insights & News">
+    <meta property="og:description" content="Empowering the body of Christ with timely global church coverage, theological depth, and digital ministry insights.">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1438232992991-995b7058bbb3?auto=format&fit=crop&w=1200&q=80">
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://gospelintel.org">
+    <meta name="twitter:title" content="Gospel Intel | Actionable Faith Insights">
+    <meta name="twitter:description" content="Breaking updates from the global church, pastoral leadership tools, and daily devotional reflections.">
+    <meta name="twitter:image" content="https://images.unsplash.com/photo-1438232992991-995b7058bbb3?auto=format&fit=crop&w=1200&q=80">
+
+    <!-- Google Fonts & FontAwesome -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- JSON-LD Structured Data for Gospel News SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "NewsMediaOrganization",
+      "name": "Gospel Intel",
+      "url": "https://gospelintel.org",
+      "logo": "https://gospelintel.org/assets/logo.png",
+      "knowsAbout": ["Christianity", "Theology", "Global Church", "Devotionals"],
+      "sameAs": [
+        "https://twitter.com/gospelintel",
+        "https://facebook.com/gospelintel"
+      ]
+    }
+    </script>
+
+    <style>
+        /* CSS Variables for Dynamic Dark/Light Theme (Gospel Intel Palette) */
+        :root {
+            --bg-body: #fafaf9;
+            --bg-card: #ffffff;
+            --bg-header: rgba(255, 255, 255, 0.94);
+            --bg-sidebar: #ffffff;
+            --text-main: #1c1917;
+            --text-muted: #78716c;
+            --border-color: #e7e5e4;
+            
+            --accent-color: #d97706; /* Kingdom Amber/Gold */
+            --accent-hover: #b45309;
+            --accent-glow: rgba(217, 119, 6, 0.12);
+            --navy-primary: #1e1b4b; /* Royal Deep Blue */
+            
+            --badge-bg: #fef3c7;
+            --badge-text: #92400e;
+            --shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
+            --radius: 12px;
+
+            --skeleton-bg: #e7e5e4;
+        }
+
+        [data-theme="dark"] {
+            --bg-body: #0c0a09;
+            --bg-card: #161412;
+            --bg-header: rgba(22, 20, 18, 0.94);
+            --bg-sidebar: #161412;
+            --text-main: #f5f5f4;
+            --text-muted: #a8a29e;
+            --border-color: #27272a;
+            
+            --accent-color: #f59e0b;
+            --accent-hover: #d97706;
+            --accent-glow: rgba(245, 158, 11, 0.15);
+            --navy-primary: #312e81;
+            
+            --badge-bg: rgba(245, 158, 11, 0.15);
+            --badge-text: #fcd34d;
+            --shadow: 0 4px 25px -2px rgba(0, 0, 0, 0.4);
+
+            --skeleton-bg: #27272a;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding-bottom: 60px;
+            overflow-x: hidden;
+        }
+
+        body.sidebar-open {
+            overflow: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Cinzel', serif;
+            letter-spacing: -0.01em;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* Loading Skeleton & Spinner Styles */
+        @keyframes pulse {
+            0% { opacity: 0.6; }
+            50% { opacity: 0.3; }
+            100% { opacity: 0.6; }
+        }
+
+        .skeleton {
+            animation: pulse 1.5s infinite ease-in-out;
+            background-color: var(--skeleton-bg);
+            border-radius: 6px;
+        }
+
+        .loading-spinner {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2.5rem 1rem;
+            width: 100%;
+            grid-column: 1 / -1;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            gap: 12px;
+        }
+
+        .loading-spinner i {
+            font-size: 1.8rem;
+            color: var(--accent-color);
+        }
+
+        .no-content-msg {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 2rem 1rem;
+            color: var(--text-muted);
+            background: var(--bg-card);
+            border: 1px dashed var(--border-color);
+            border-radius: var(--radius);
+            font-size: 0.9rem;
+        }
+
+        /* Kingdom Ticker Bar */
+        .ticker-wrap {
+            background: var(--navy-primary);
+            color: #ffffff;
+            font-size: 0.825rem;
+            font-weight: 600;
+            padding: 6px 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            overflow: hidden;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .ticker-label {
+            background: var(--accent-color);
+            color: #000000;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-weight: 800;
+            text-transform: uppercase;
+            font-size: 0.7rem;
+            white-space: nowrap;
+        }
+
+        .ticker-text {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            color: #e0e7ff;
+        }
+
+        /* Header Navigation Layout */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: var(--bg-header);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-color);
+            padding: 0.85rem 1.5rem;
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            align-items: center;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            padding-right: 8px;
+        }
+
+        .brand-logo {
+            font-family: 'Cinzel', serif;
+            font-size: 1.6rem;
+            font-weight: 500;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding-right: 3px;
+            text-align: center;
+        }
+
+        .brand-logo span {
+            color: var(--accent-color);
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 5px;
+        }
+
+        .icon-btn {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.05rem;
+        }
+
+        .icon-btn:hover {
+            border-color: var(--accent-color);
+            color: var(--accent-color);
+        }
+
+        /* Sidebar Navigation Drawer */
+        .sidebar-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(4px);
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .sidebar-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .sidebar-drawer {
+            position: fixed;
+            top: 0;
+            right: -320px;
+            width: 300px;
+            height: 100%;
+            background: var(--bg-sidebar);
+            z-index: 1001;
+            box-shadow: -5px 0 25px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+            transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .sidebar-drawer.open {
+            right: 0;
+        }
+
+        .sidebar-header {
+            padding: 1.25rem 1.5rem;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .sidebar-title {
+            font-family: 'Cinzel', serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--accent-color);
+        }
+
+        .close-sidebar-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            font-size: 1.25rem;
+            cursor: pointer;
+            padding: 4px;
+        }
+
+        .close-sidebar-btn:hover {
+            color: var(--accent-color);
+        }
+
+        .sidebar-menu {
+            list-style: none;
+            padding: 1rem 0;
+            overflow-y: auto;
+            flex-grow: 1;
+        }
+
+        .sidebar-item a {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 0.85rem 1.5rem;
+            font-weight: 600;
+            color: var(--text-main);
+            font-size: 0.95rem;
+            border-left: 3px solid transparent;
+        }
+
+        .sidebar-item a:hover, .sidebar-item.active a {
+            background: var(--accent-glow);
+            color: var(--accent-color);
+            border-left-color: var(--accent-color);
+        }
+
+        .sidebar-item a i {
+            width: 20px;
+            text-align: center;
+            color: var(--text-muted);
+        }
+
+        .sidebar-item a:hover i, .sidebar-item.active a i {
+            color: var(--accent-color);
+        }
+
+        .sidebar-footer {
+            padding: 1.25rem 1.5rem;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .sidebar-socials {
+            display: flex;
+            gap: 12px;
+            margin-top: 10px;
+        }
+
+        .sidebar-socials a {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: var(--bg-body);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        .sidebar-socials a:hover {
+            background: var(--accent-color);
+            color: #ffffff;
+        }
+
+        /* Category Pill Filters */
+        .category-bar {
+            max-width: 1200px;
+            margin: 1.25rem auto 0;
+            padding: 0 1.5rem;
+            display: flex;
+            gap: 10px;
+            overflow-x: auto;
+            scrollbar-width: none;
+        }
+
+        .category-bar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .pill {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            color: var(--text-muted);
+            padding: 8px 18px;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+
+        .pill.active {
+            background: var(--accent-color);
+            color: #ffffff;
+            border-color: var(--accent-color);
+        }
+
+        /* Main Container */
+        main {
+            max-width: 1200px;
+            margin: 1.5rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .section-title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-title::before {
+            content: '';
+            width: 4px;
+            height: 20px;
+            background-color: var(--accent-color);
+            border-radius: 2px;
+        }
+
+        /* Badges & Actions */
+        .badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 0.725rem;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            width: fit-content;
+        }
+
+        .reactions {
+            display: flex;
+            gap: 12px;
+        }
+
+        .reaction-btn {
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 0.85rem;
+        }
+
+        .reaction-btn:hover {
+            color: var(--accent-color);
+        }
+
+        /* 1. HERO SPOTLIGHT */
+        .hero-spotlight {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .hero-main {
+            position: relative;
+            border-radius: var(--radius);
+            overflow: hidden;
+            min-height: 380px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 2rem;
+            background-size: cover;
+            background-position: center;
+            color: #ffffff;
+            box-shadow: var(--shadow);
+            background-color: var(--bg-card);
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.3) 60%, rgba(0,0,0,0) 100%);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-title {
+            font-size: 1.8rem;
+            font-weight: 800;
+            line-height: 1.25;
+            margin-top: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .side-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            padding: 1rem;
+            box-shadow: var(--shadow);
+        }
+
+        .side-item-title {
+            font-size: 0.95rem;
+            font-weight: 700;
+            line-height: 1.35;
+        }
+
+        /* SCRIPTURE REFLECTION WIDGET */
+        .scripture-card {
+            background: linear-gradient(135deg, var(--bg-card) 0%, var(--accent-glow) 100%);
+            border: 1px solid var(--border-color);
+            border-left: 4px solid var(--accent-color);
+            border-radius: var(--radius);
+            padding: 1.25rem;
+            margin-bottom: 2.5rem;
+            box-shadow: var(--shadow);
+        }
+
+        .scripture-quote {
+            font-family: 'Cinzel', serif;
+            font-style: italic;
+            font-size: 1.05rem;
+            color: var(--text-main);
+            margin-bottom: 0.5rem;
+        }
+
+        .scripture-ref {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            text-transform: uppercase;
+        }
+
+        /* 2. STANDARD ARTICLE GRID */
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .card-img-wrapper {
+            width: 100%;
+            height: 190px;
+            position: relative;
+            overflow: hidden;
+            background-color: var(--skeleton-bg);
+        }
+
+        .card-img-wrapper .badge {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            z-index: 2;
+        }
+
+        .card-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .card-body {
+            padding: 1.25rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .card-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            line-height: 1.4;
+            margin-bottom: 0.75rem;
+        }
+
+        .card-excerpt {
+            color: var(--text-muted);
+            font-size: 0.875rem;
+            margin-bottom: 1.25rem;
+            flex-grow: 1;
+        }
+
+        .card-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-top: 1px solid var(--border-color);
+            padding-top: 0.85rem;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        /* LAYOUT TYPE A: HORIZONTAL LIST SECTION */
+        .list-section {
+            margin-bottom: 2.5rem;
+        }
+
+        .list-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .list-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            padding: 1rem;
+            display: flex;
+            gap: 1.25rem;
+            align-items: center;
+            box-shadow: var(--shadow);
+        }
+
+        .list-thumb {
+            width: 140px;
+            height: 100px;
+            border-radius: 8px;
+            object-fit: cover;
+            flex-shrink: 0;
+            background-color: var(--skeleton-bg);
+        }
+
+        .list-content {
+            flex-grow: 1;
+        }
+
+        .list-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            margin: 4px 0 6px;
+        }
+
+        .list-meta {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        /* LAYOUT TYPE B: STAGGERED DEEP DIVES */
+        .staggered-section {
+            margin-bottom: 2.5rem;
+        }
+
+        .staggered-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .staggered-large {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .staggered-large img {
+            width: 100%;
+            height: 260px;
+            object-fit: cover;
+            background-color: var(--skeleton-bg);
+        }
+
+        .staggered-sub-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        /* LAYOUT TYPE C: SPEED READS BRIEFING */
+        .briefs-section {
+            margin-bottom: 2.5rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+        }
+
+        .briefs-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.25rem;
+            list-style: none;
+        }
+
+        .brief-item {
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+        }
+
+        .brief-num {
+            background: var(--accent-color);
+            color: #ffffff;
+            font-size: 0.8rem;
+            font-weight: 800;
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .brief-text {
+            font-size: 0.925rem;
+            font-weight: 600;
+            line-height: 1.4;
+        }
+
+        /* LAYOUT TYPE D: MAGAZINE DUAL-SPLIT */
+        .magazine-section {
+            margin-bottom: 2.5rem;
+        }
+
+        .magazine-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .magazine-feature {
+            position: relative;
+            border-radius: var(--radius);
+            overflow: hidden;
+            min-height: 320px;
+            display: flex;
+            align-items: flex-end;
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+            background-color: var(--bg-card);
+        }
+
+        .magazine-feature img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .magazine-feature-content {
+            position: relative;
+            z-index: 2;
+            color: #ffffff;
+        }
+
+        .magazine-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            justify-content: space-between;
+        }
+
+        .magazine-mini {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            padding: 1rem;
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .magazine-mini img {
+            width: 80px;
+            height: 80px;
+            border-radius: 8px;
+            object-fit: cover;
+            flex-shrink: 0;
+            background-color: var(--skeleton-bg);
+        }
+
+        /* LAYOUT TYPE E: CAROUSEL TRACK */
+        .carousel-section {
+            margin-bottom: 2.5rem;
+        }
+
+        .carousel-track {
+            display: flex;
+            gap: 1.25rem;
+            overflow-x: auto;
+            padding-bottom: 10px;
+            scrollbar-width: thin;
+        }
+
+        .carousel-track::-webkit-scrollbar {
+            height: 6px;
+        }
+
+        .carousel-track::-webkit-scrollbar-thumb {
+            background: var(--border-color);
+            border-radius: 10px;
+        }
+
+        .carousel-card {
+            min-width: 260px;
+            max-width: 260px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            flex-shrink: 0;
+        }
+
+        .carousel-img {
+            width: 100%;
+            height: 140px;
+            object-fit: cover;
+            background-color: var(--skeleton-bg);
+        }
+
+        .carousel-body {
+            padding: 1rem;
+        }
+
+        .carousel-title {
+            font-size: 0.95rem;
+            font-weight: 700;
+            line-height: 1.35;
+            margin-top: 6px;
+        }
+
+        /* SERMON & MEDIA SHOWCASE */
+        .video-section {
+            margin-bottom: 2.5rem;
+        }
+
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.25rem;
+        }
+
+        .video-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .video-thumb {
+            position: relative;
+            width: 100%;
+            height: 160px;
+            background-color: var(--skeleton-bg);
+        }
+
+        .video-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .play-btn {
+            position: absolute;
+            inset: 0;
+            margin: auto;
+            width: 44px;
+            height: 44px;
+            background: var(--accent-color);
+            color: #ffffff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+
+        .video-info {
+            padding: 1rem;
+        }
+
+        .video-title {
+            font-size: 0.95rem;
+            font-weight: 700;
+            line-height: 1.35;
+        }
+
+        /* OPINION & NEWSLETTER SPLIT */
+        .middle-split {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .opinion-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .opinion-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            padding: 1.25rem;
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .author-avatar {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--accent-color);
+            background-color: var(--skeleton-bg);
+        }
+
+        .opinion-body {
+            flex-grow: 1;
+        }
+
+        .author-name {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            text-transform: uppercase;
+        }
+
+        .opinion-quote {
+            font-size: 0.95rem;
+            font-weight: 700;
+            line-height: 1.35;
+        }
+
+        .newsletter-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .newsletter-input {
+            width: 100%;
+            padding: 10px 14px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            background: var(--bg-body);
+            color: var(--text-main);
+            margin: 1rem 0 0.75rem;
+            font-size: 0.875rem;
+            outline: none;
+        }
+
+        .newsletter-btn {
+            background: var(--accent-color);
+            color: #ffffff;
+            border: none;
+            padding: 10px 16px;
+            border-radius: 8px;
+            font-size: 0.875rem;
+            font-weight: 700;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        /* Sponsor Banner */
+        .ad-slot {
+            width: 100%;
+            background: var(--bg-card);
+            border: 1px dashed var(--border-color);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            text-align: center;
+            margin-bottom: 2.5rem;
+            color: var(--text-muted);
+            font-size: 0.875rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--bg-card);
+            border-top: 1px solid var(--border-color);
+            padding: 2.5rem 1.5rem;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.875rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 18px;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        /* Mobile Breakpoints */
+        @media (max-width: 850px) {
+            .hero-spotlight, .middle-split, .staggered-grid, .magazine-layout {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+            header {
+                padding: 0.75rem 1rem;
+            }
+            .brand-logo {
+                font-size: 1.35rem;
+            }
+            main {
+                padding: 0 1rem;
+            }
+            .hero-main {
+                min-height: 280px;
+                padding: 1.25rem;
+            }
+            .hero-title {
+                font-size: 1.35rem;
+            }
+            .list-card {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .list-thumb {
+                width: 100%;
+                height: 160px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Kingdom News Ticker -->
+    <div class="ticker-wrap">
+        <span class="ticker-label">Breaking</span>
+        <div class="ticker-text" id="tickerText">
+            <span style="opacity: 0.7;"><i class="fa-solid fa-spinner fa-spin"></i> Loading latest updates...</span>
+        </div>
+    </div>
+
+    <!-- Main Navigation Header -->
+    <header>
+        <div class="header-left">
+            <button class="icon-btn" id="searchBtn" aria-label="Search articles">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+        </div>
+
+        <!-- Brand Logo -->
+        <a href="/" class="brand-logo">
+            <i class="fa-solid fa-cross" style="color: var(--accent-color);"></i> Gospel <span>Intel</span>
+        </a>
+
+        <!-- Controls -->
+        <div class="header-right">
+            <button class="icon-btn" id="themeToggle" aria-label="Toggle dark mode">
+                <i class="fa-solid fa-moon" id="themeIcon"></i>
+            </button>
+            <button class="icon-btn" id="sidebarToggle" aria-label="Open sidebar menu">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Slide-over Drawer & Overlay -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    <aside class="sidebar-drawer" id="sidebarDrawer">
+        <div class="sidebar-header">
+            <span class="sidebar-title"><i class="fa-solid fa-cross"></i> Gospel Intel</span>
+            <button class="close-sidebar-btn" id="sidebarClose" aria-label="Close sidebar">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+        <ul class="sidebar-menu">
+            <li class="sidebar-item active">
+                <a href="#"><i class="fa-solid fa-house"></i> Home</a>
+            </li>
+            <li class="sidebar-item">
+                <a href="#"><i class="fa-solid fa-globe"></i> Global Church</a>
+            </li>
+            <li class="sidebar-item">
+                <a href="#"><i class="fa-solid fa-book-bible"></i> Theology & Culture</a>
+            </li>
+            <li class="sidebar-item">
+                <a href="#"><i class="fa-solid fa-microchip"></i> Faith & Tech</a>
+            </li>
+            <li class="sidebar-item">
+                <a href="#"><i class="fa-solid fa-hands-praying"></i> Devotionals</a>
+            </li>
+            <li class="sidebar-item">
+                <a href="#"><i class="fa-solid fa-user-group"></i> Pastoral Leadership</a>
+            </li>
+            <li class="sidebar-item">
+                <a href="#"><i class="fa-solid fa-toolbox"></i> Ministry Tools</a>
+            </li>
+            <li class="sidebar-item">
+                <a href="#"><i class="fa-solid fa-podcast"></i> Sermons & Podcasts</a>
+            </li>
+        </ul>
+        <div class="sidebar-footer">
+            <p><strong>Gospel Intel Media Network</strong></p>
+            <p style="margin-top: 2px;">Actionable Christian insights & global news.</p>
+            <div class="sidebar-socials">
+                <a href="#" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+                <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Category Navigation Pills -->
+    <nav class="category-bar">
+        <button class="pill active">All Stories</button>
+        <button class="pill">Global Church</button>
+        <button class="pill">Theology & Culture</button>
+        <button class="pill">Faith & Tech</button>
+        <button class="pill">Devotionals</button>
+        <button class="pill">Pastoral Leadership</button>
+        <button class="pill">Ministry Tools</button>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+
+        <!-- Scripture of the Day Widget -->
+        <div class="scripture-card" id="scriptureCard">
+            <div style="display: flex; gap: 10px; align-items: center;">
+                <i class="fa-solid fa-circle-notch fa-spin" style="color: var(--accent-color);"></i>
+                <span style="font-size: 0.85rem; color: var(--text-muted);">Loading Daily Meditation...</span>
+            </div>
+        </div>
+
+        <!-- 1. HERO SPOTLIGHT -->
+        <section class="hero-spotlight">
+            <article class="hero-main" id="heroMain">
+                <div class="loading-spinner">
+                    <i class="fa-solid fa-spinner fa-spin"></i>
+                    <span>Fetching Spotlight Story...</span>
+                </div>
+            </article>
+
+            <div class="hero-sidebar" id="heroSidebar">
+                <h3 class="section-title" style="margin-bottom: 0.5rem;">Trending Intel</h3>
+                <div class="loading-spinner">
+                    <i class="fa-solid fa-spinner fa-spin"></i>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. EDITOR'S PICKS LIST SECTION -->
+        <section class="list-section">
+            <h2 class="section-title">Editor's Analysis</h2>
+            <div class="list-container" id="listContainer">
+                <div class="loading-spinner">
+                    <i class="fa-solid fa-circle-notch fa-spin"></i>
+                    <span>Loading Editorial Analysis...</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. MAIN ARTICLE GRID -->
+        <section>
+            <h2 class="section-title">Latest Kingdom Stories</h2>
+
+            <div class="news-grid" id="newsGrid">
+                <div class="loading-spinner">
+                    <i class="fa-solid fa-spinner fa-spin"></i>
+                    <span>Loading Articles from Database...</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. DEEP DIVES STAGGERED SECTION -->
+        <section class="staggered-section">
+            <h2 class="section-title">Theological Essays & Cultural Deep Dives</h2>
+            <div class="staggered-grid" id="staggeredContainer">
+                <div class="loading-spinner">
+                    <i class="fa-solid fa-spinner fa-spin"></i>
+                    <span>Loading Essays...</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. 1-MINUTE DEVOTIONAL BRIEFS -->
+        <section class="briefs-section">
+            <h2 class="section-title" style="margin-bottom: 1.25rem;">Speed Reflections (1-Minute Meditations)</h2>
+            <ul class="briefs-list" id="briefsList">
+                <li class="loading-spinner">
+                    <i class="fa-solid fa-circle-notch fa-spin"></i>
+                </li>
+            </ul>
+        </section>
+
+        <!-- 6. MAGAZINE DUAL-SPLIT -->
+        <section class="magazine-section">
+            <h2 class="section-title">Kingdom Spotlight</h2>
+            <div class="magazine-layout" id="magazineContainer">
+                <div class="loading-spinner">
+                    <i class="fa-solid fa-spinner fa-spin"></i>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. CAROUSEL TRACK -->
+        <section class="carousel-section">
+            <h2 class="section-title">Global Missions & Outreach Track</h2>
+            <div class="carousel-track" id="carouselTrack">
+                <div class="loading-spinner">
+                    <i class="fa-solid fa-spinner fa-spin"></i>
+                    <span>Loading Missions Track...</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- 8. SERMON & PODCAST MEDIA SHOWCASE -->
+        <section class="video-section">
+            <h2 class="section-title">Sermon Clips & Broadcasts</h2>
+            <div class="video-grid" id="videoGrid">
+                <div class="loading-spinner">
+                    <i class="fa-solid fa-spinner fa-spin"></i>
+                    <span>Loading Media Content...</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- 9. OPINION COLUMNS & DAILY NEWSLETTER -->
+        <section class="middle-split">
+            
+            <!-- Columnists -->
+            <div>
+                <h2 class="section-title">Pastoral Perspectives</h2>
+                <div class="opinion-list" id="opinionList">
+                    <div class="loading-spinner">
+                        <i class="fa-solid fa-circle-notch fa-spin"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Daily Devotional Digest Signup -->
+            <div class="newsletter-card">
+                <i class="fa-solid fa-envelope-open-text" style="font-size: 2rem; color: var(--accent-color); margin-bottom: 0.5rem;"></i>
+                <h3 style="font-family: 'Cinzel', serif; font-size: 1.2rem; font-weight: 700;">Daily Devotional Digest</h3>
+                <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 4px;">Receive daily scriptures, prayer points, and faith news directly in your inbox.</p>
+                <form id="newsletterForm">
+                    <input type="email" id="newsletterEmail" placeholder="Enter your email address" class="newsletter-input" aria-label="Email Address" required>
+                    <button type="submit" class="newsletter-btn">Subscribe Free</button>
+                </form>
+            </div>
+
+        </section>
+
+        <!-- 10. SPONSORSHIP / MINISTRY PARTNER SLOT -->
+        <div class="ad-slot">
+            <p style="font-family: 'Cinzel', serif; font-weight: 700;">MINISTRY PARTNERSHIP SLOT</p>
+            <p style="margin-top: 4px;">Partner with Gospel Intel to highlight your global outreach or ministry event.</p>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-links">
+            <a href="#">About Gospel Intel</a>
+            <a href="#">Statement of Faith</a>
+            <a href="#">Editorial Team</a>
+            <a href="#">Contact Us</a>
+            <a href="#">Ministry Partnerships</a>
+            <a href="#">Privacy Policy</a>
+        </div>
+        <p>&copy; 2026 Gospel Intel. Actionable Christian Insights & Global News.</p>
+    </footer>
+
+    <!-- Basic UI Scripts -->
+    <script>
+        // 1. Dark Mode Toggle with LocalStorage
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = document.getElementById('themeIcon');
+        const currentTheme = localStorage.getItem('gospel_theme') || 'light';
+
+        if (currentTheme === 'dark') {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            themeIcon.classList.replace('fa-moon', 'fa-sun');
+        }
+
+        themeToggle.addEventListener('click', () => {
+            const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+            if (isDark) {
+                document.documentElement.removeAttribute('data-theme');
+                themeIcon.classList.replace('fa-sun', 'fa-moon');
+                localStorage.setItem('gospel_theme', 'light');
+            } else {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                themeIcon.classList.replace('fa-moon', 'fa-sun');
+                localStorage.setItem('gospel_theme', 'dark');
+            }
+        });
+
+        // 2. Sidebar Navigation Drawer Controls
+        const sidebarToggle = document.getElementById('sidebarToggle');
+        const sidebarClose = document.getElementById('sidebarClose');
+        const sidebarDrawer = document.getElementById('sidebarDrawer');
+        const sidebarOverlay = document.getElementById('sidebarOverlay');
+
+        function openSidebar() {
+            sidebarDrawer.classList.add('open');
+            sidebarOverlay.classList.add('active');
+            document.body.classList.add('sidebar-open');
+        }
+
+        function closeSidebar() {
+            sidebarDrawer.classList.remove('open');
+            sidebarOverlay.classList.remove('active');
+            document.body.classList.remove('sidebar-open');
+        }
+
+        sidebarToggle.addEventListener('click', openSidebar);
+        sidebarClose.addEventListener('click', closeSidebar);
+        sidebarOverlay.addEventListener('click', closeSidebar);
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && sidebarDrawer.classList.contains('open')) {
+                closeSidebar();
+            }
+        });
+
+        // 3. Article Reaction Counter Logic
+        window.handleReaction = function(btn) {
+            const icon = btn.querySelector('i');
+            const countSpan = btn.querySelector('span');
+            let count = parseInt(countSpan.textContent) || 0;
+
+            if (icon.classList.contains('fa-regular')) {
+                icon.classList.replace('fa-regular', 'fa-solid');
+                icon.style.color = 'var(--accent-color)';
+                countSpan.textContent = count + 1;
+            } else {
+                icon.classList.replace('fa-solid', 'fa-regular');
+                icon.style.color = '';
+                countSpan.textContent = count - 1;
+            }
+        };
+    </script>
+
+    <!-- Firebase SDK & Live Firestore Data Renderer -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import { 
+            getFirestore, collection, query, where, orderBy, limit, getDocs, addDoc, serverTimestamp 
+        } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+        // Firebase Configuration (Replace credentials)
+        const firebaseConfig = {
+            apiKey: "AIzaSyBfoxEnVep0wX5V_KVS-cd8o5sUMvrFY4c",
+        authDomain: "primeintelmedia-e2fe3.firebaseapp.com",
+        databaseURL: "https://primeintelmedia-e2fe3-default-rtdb.firebaseio.com",
+        projectId: "primeintelmedia-e2fe3",
+        storageBucket: "primeintelmedia-e2fe3.firebasestorage.app",
+        messagingSenderId: "228866357632",
+        appId: "1:228866357632:web:72dc9942f1cd41d857a965",
+        measurementId: "G-G0HRRV932S"
+      };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        // Helper: Format Dropbox Link
+        function formatDropboxUrl(url) {
+            if (!url) return '';
+            let cleanUrl = url.trim();
+            if (cleanUrl.includes('dropbox.com')) {
+                cleanUrl = cleanUrl.replace('dl=0', 'raw=1').replace('dl=1', 'raw=1');
+                if (!cleanUrl.includes('raw=1')) {
+                    cleanUrl += cleanUrl.includes('?') ? '&raw=1' : '?raw=1';
+                }
+            }
+            return cleanUrl;
+        }
+
+        // Initialize Firestore Queries
+        document.addEventListener("DOMContentLoaded", () => {
+            loadBreakingTicker();
+            loadScriptureWidget();
+            loadHeroSection();
+            loadEditorList();
+            loadLatestGrid();
+            loadDeepDives();
+            loadSpeedReads();
+            loadMagazineSection();
+            loadCarouselTrack();
+            loadSermonMedia();
+            loadPastoralPerspectives();
+        });
+
+        // 1. Ticker Loader
+        async function loadBreakingTicker() {
+            const tickerEl = document.getElementById("tickerText");
+            try {
+                const q = query(
+                    collection(db, "articles"),
+                    where("status", "==", "published"),
+                    where("isBreaking", "==", true),
+                    orderBy("createdAt", "desc"),
+                    limit(5)
+                );
+                const snapshot = await getDocs(q);
+                let titles = [];
+                snapshot.forEach(doc => titles.push(doc.data().title));
+                if (titles.length > 0) {
+                    tickerEl.textContent = titles.join(" • ");
+                } else {
+                    tickerEl.textContent = "Welcome to Gospel Intel • Empowering the Body of Christ with Actionable Insights";
+                }
+            } catch (err) {
+                tickerEl.textContent = "Gospel Intel • Actionable Christian Insights & Global News";
+            }
+        }
+
+        // 2. Scripture Widget Loader
+        async function loadScriptureWidget() {
+            const container = document.getElementById("scriptureCard");
+            try {
+                const q = query(collection(db, "scriptures"), where("isActive", "==", true), limit(1));
+                const snapshot = await getDocs(q);
+                if (!snapshot.empty) {
+                    snapshot.forEach(doc => {
+                        const data = doc.data();
+                        container.innerHTML = `
+                            <p class="scripture-quote">"${data.quote}"</p>
+                            <span class="scripture-ref">${data.reference} • ${data.subtitle || 'Daily Meditation'}</span>
+                        `;
+                    });
+                } else {
+                    container.style.display = 'none';
+                }
+            } catch (err) {
+                container.style.display = 'none';
+            }
+        }
+
+        // 3. Hero Section Loader (Main + Sidebar)
+        async function loadHeroSection() {
+            const heroEl = document.getElementById("heroMain");
+            const sidebar = document.getElementById("heroSidebar");
+
+            try {
+                // Fetch Main Hero Article
+                const mainQuery = query(
+                    collection(db, "articles"),
+                    where("status", "==", "published"),
+                    where("sections", "array-contains", "hero-main"),
+                    limit(1)
+                );
+                const mainSnap = await getDocs(mainQuery);
+                
+                if (!mainSnap.empty) {
+                    const doc = mainSnap.docs[0];
+                    const data = doc.data();
+                    const img = formatDropboxUrl(data.imageUrl);
+
+                    heroEl.style.backgroundImage = `url('${img}')`;
+                    heroEl.innerHTML = `
+                        <div class="hero-overlay"></div>
+                        <div class="hero-content">
+                            <span class="badge">${data.category}</span>
+                            <h2 class="hero-title">
+                                <a href="reader.html?id=${doc.id}">${data.title}</a>
+                            </h2>
+                            <p style="font-size: 0.875rem; opacity: 0.9;">${data.readTime || '5 mins read'}</p>
+                        </div>
+                    `;
+                } else {
+                    heroEl.innerHTML = `<div class="no-content-msg">No story currently set as Hero Main Feature in Admin console.</div>`;
+                }
+
+                // Fetch Sidebar Articles
+                const sideQuery = query(
+                    collection(db, "articles"),
+                    where("status", "==", "published"),
+                    where("sections", "array-contains", "hero-side"),
+                    limit(3)
+                );
+                const sideSnap = await getDocs(sideQuery);
+                
+                sidebar.innerHTML = '<h3 class="section-title" style="margin-bottom: 0.5rem;">Trending Intel</h3>';
+                if (!sideSnap.empty) {
+                    let idx = 1;
+                    sideSnap.forEach(doc => {
+                        const data = doc.data();
+                        sidebar.innerHTML += `
+                            <div class="side-item">
+                                <span style="font-size: 0.75rem; color: var(--accent-color); font-weight: 700;">#${idx} ${data.category.toUpperCase()}</span>
+                                <h4 class="side-item-title">
+                                    <a href="reader.html?id=${doc.id}">${data.title}</a>
+                                </h4>
+                            </div>
+                        `;
+                        idx++;
+                    });
+                } else {
+                    sidebar.innerHTML += `<div class="no-content-msg">No trending items assigned.</div>`;
+                }
+            } catch (err) { console.error("Hero section error:", err); }
+        }
+
+        // 4. Editor's Analysis Loader
+        async function loadEditorList() {
+            const container = document.getElementById("listContainer");
+            try {
+                const q = query(
+                    collection(db, "articles"),
+                    where("status", "==", "published"),
+                    where("sections", "array-contains", "editor-list"),
+                    limit(3)
+                );
+                const snapshot = await getDocs(q);
+                if (!snapshot.empty) {
+                    container.innerHTML = "";
+                    snapshot.forEach(doc => {
+                        const data = doc.data();
+                        container.innerHTML += `
+                            <article class="list-card">
+                                <img src="${formatDropboxUrl(data.imageUrl)}" alt="${data.title}" class="list-thumb">
+                                <div class="list-content">
+                                    <span class="badge">${data.category}</span>
+                                    <h3 class="list-title">
+                                        <a href="reader.html?id=${doc.id}">${data.title}</a>
+                                    </h3>
+                                    <div class="list-meta">
+                                        <span>By ${data.author?.name || 'Gospel Intel Desk'}</span>
+                                        <span>•</span>
+                                        <span>${data.readTime || '5 mins read'}</span>
+                                    </div>
+                                </div>
+                            </article>
+                        `;
+                    });
+                } else {
+                    container.innerHTML = `<div class="no-content-msg">No articles tagged for Editor's Analysis.</div>`;
+                }
+            } catch (err) { console.error("Editor list error:", err); }
+        }
+
+        // 5. Main Article Grid Loader (With Dynamic Category Filter Pills)
+        window.loadLatestGrid = async function(categoryFilter = null) {
+            const grid = document.getElementById("newsGrid");
+            grid.innerHTML = `
+                <div class="loading-spinner">
+                    <i class="fa-solid fa-spinner fa-spin"></i>
+                    <span>Updating feed...</span>
+                </div>
+            `;
+
+            try {
+                let gridQuery;
+                const articlesRef = collection(db, "articles");
+
+                if (categoryFilter && categoryFilter !== "All Stories") {
+                    gridQuery = query(
+                        articlesRef,
+                        where("status", "==", "published"),
+                        where("category", "==", categoryFilter),
+                        limit(9)
+                    );
+                } else {
+                    gridQuery = query(
+                        articlesRef,
+                        where("status", "==", "published"),
+                        where("sections", "array-contains", "latest"),
+                        limit(9)
+                    );
+                }
+
+                const snapshot = await getDocs(gridQuery);
+                if (!snapshot.empty) {
+                    grid.innerHTML = "";
+                    snapshot.forEach(doc => {
+                        const item = doc.data();
+                        grid.innerHTML += `
+                            <article class="card">
+                                <div class="card-img-wrapper">
+                                    <span class="badge">${item.category}</span>
+                                    <img src="${formatDropboxUrl(item.imageUrl)}" alt="${item.title}" class="card-img" loading="lazy">
+                                </div>
+                                <div class="card-body">
+                                    <h3 class="card-title">
+                                        <a href="reader.html?id=${doc.id}">${item.title}</a>
+                                    </h3>
+                                    <p class="card-excerpt">${item.excerpt}</p>
+                                    <div class="card-footer">
+                                        <span>${item.readTime || '5 mins read'}</span>
+                                        <div class="reactions">
+                                            <button class="reaction-btn" onclick="handleReaction(this)">
+                                                <i class="fa-regular fa-heart"></i> <span>${item.stats?.likes || 0}</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                        `;
+                    });
+                } else {
+                    grid.innerHTML = `<div class="no-content-msg">No published articles found in this selection.</div>`;
+                }
+            } catch (err) { console.error("Latest grid error:", err); }
+        };
+
+        // Category Pills Click Handlers
+        document.querySelectorAll(".pill").forEach(pill => {
+            pill.addEventListener("click", (e) => {
+                document.querySelectorAll(".pill").forEach(p => p.classList.remove("active"));
+                e.target.classList.add("active");
+                const cat = e.target.textContent.trim();
+                loadLatestGrid(cat);
+            });
+        });
+
+        // 6. Deep Dives Loader
+        async function loadDeepDives() {
+            const container = document.getElementById("staggeredContainer");
+            try {
+                const q = query(
+                    collection(db, "articles"),
+                    where("status", "==", "published"),
+                    where("sections", "array-contains", "deep-dive"),
+                    limit(3)
+                );
+                const snapshot = await getDocs(q);
+                const docs = snapshot.docs;
+
+                if (docs.length > 0) {
+                    const mainData = docs[0].data();
+                    let subItemsHtml = "";
+
+                    for (let i = 1; i < docs.length; i++) {
+                        const subData = docs[i].data();
+                        subItemsHtml += `
+                            <article class="side-item" style="padding: 1.25rem;">
+                                <span class="badge">${subData.category}</span>
+                                <h4 class="side-item-title" style="margin-top: 8px; font-size: 1.05rem;">
+                                    <a href="reader.html?id=${docs[i].id}">${subData.title}</a>
+                                </h4>
+                                <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 4px;">${subData.excerpt}</p>
+                            </article>
+                        `;
+                    }
+
+                    container.innerHTML = `
+                        <article class="staggered-large">
+                            <img src="${formatDropboxUrl(mainData.imageUrl)}" alt="${mainData.title}">
+                            <div class="card-body">
+                                <span class="badge">${mainData.category}</span>
+                                <h3 class="card-title" style="font-size: 1.4rem; margin-top: 8px;">
+                                    <a href="reader.html?id=${docs[0].id}">${mainData.title}</a>
+                                </h3>
+                                <p class="card-excerpt">${mainData.excerpt}</p>
+                                <div class="card-footer">
+                                    <span>${mainData.readTime || '8 mins read'}</span>
+                                </div>
+                            </div>
+                        </article>
+                        <div class="staggered-sub-grid">
+                            ${subItemsHtml || '<div class="no-content-msg">No secondary essays.</div>'}
+                        </div>
+                    `;
+                } else {
+                    container.innerHTML = `<div class="no-content-msg">No Theological Essays tagged for this section.</div>`;
+                }
+            } catch (err) { console.error("Deep dives error:", err); }
+        }
+
+        // 7. Speed Reads Loader
+        async function loadSpeedReads() {
+            const list = document.getElementById("briefsList");
+            try {
+                const q = query(
+                    collection(db, "articles"),
+                    where("status", "==", "published"),
+                    where("sections", "array-contains", "speed-reads"),
+                    limit(5)
+                );
+                const snapshot = await getDocs(q);
+                if (!snapshot.empty) {
+                    list.innerHTML = "";
+                    let count = 1;
+                    snapshot.forEach(doc => {
+                        const data = doc.data();
+                        list.innerHTML += `
+                            <li class="brief-item">
+                                <span class="brief-num">${count}</span>
+                                <div class="brief-text">
+                                    <a href="reader.html?id=${doc.id}">${data.title}</a>
+                                </div>
+                            </li>
+                        `;
+                        count++;
+                    });
+                } else {
+                    list.innerHTML = `<div class="no-content-msg">No 1-Minute Speed Reads available.</div>`;
+                }
+            } catch (err) { console.error("Speed reads error:", err); }
+        }
+
+        // 8. Magazine Section Loader
+        async function loadMagazineSection() {
+            const container = document.getElementById("magazineContainer");
+            try {
+                const q = query(
+                    collection(db, "articles"),
+                    where("status", "==", "published"),
+                    where("sections", "array-contains", "magazine"),
+                    limit(3)
+                );
+                const snapshot = await getDocs(q);
+                const docs = snapshot.docs;
+
+                if (docs.length > 0) {
+                    const magFeature = docs[0].data();
+                    let miniStackHtml = "";
+
+                    for (let i = 1; i < docs.length; i++) {
+                        const miniData = docs[i].data();
+                        miniStackHtml += `
+                            <div class="magazine-mini">
+                                <img src="${formatDropboxUrl(miniData.imageUrl)}" alt="${miniData.title}">
+                                <div>
+                                    <span style="font-size: 0.75rem; color: var(--accent-color); font-weight: 700;">${miniData.category.toUpperCase()}</span>
+                                    <h4 style="font-size: 0.95rem; font-weight: 700;">
+                                        <a href="reader.html?id=${docs[i].id}">${miniData.title}</a>
+                                    </h4>
+                                </div>
+                            </div>
+                        `;
+                    }
+
+                    container.innerHTML = `
+                        <article class="magazine-feature">
+                            <img src="${formatDropboxUrl(magFeature.imageUrl)}" alt="${magFeature.title}">
+                            <div class="hero-overlay"></div>
+                            <div class="magazine-feature-content">
+                                <span class="badge" style="background: var(--accent-color); color: #000;">${magFeature.category}</span>
+                                <h3 style="font-size: 1.3rem; font-weight: 700; margin-top: 6px;">
+                                    <a href="reader.html?id=${docs[0].id}">${magFeature.title}</a>
+                                </h3>
+                            </div>
+                        </article>
+                        <div class="magazine-stack">
+                            ${miniStackHtml || '<div class="no-content-msg">No secondary stories.</div>'}
+                        </div>
+                    `;
+                } else {
+                    container.innerHTML = `<div class="no-content-msg">No articles assigned to Kingdom Spotlight.</div>`;
+                }
+            } catch (err) { console.error("Magazine error:", err); }
+        }
+
+        // 9. Carousel Track Loader
+        async function loadCarouselTrack() {
+            const track = document.getElementById("carouselTrack");
+            try {
+                const q = query(
+                    collection(db, "articles"),
+                    where("status", "==", "published"),
+                    where("sections", "array-contains", "carousel"),
+                    limit(6)
+                );
+                const snapshot = await getDocs(q);
+                if (!snapshot.empty) {
+                    track.innerHTML = "";
+                    snapshot.forEach(doc => {
+                        const data = doc.data();
+                        track.innerHTML += `
+                            <article class="carousel-card">
+                                <img src="${formatDropboxUrl(data.imageUrl)}" alt="${data.title}" class="carousel-img">
+                                <div class="carousel-body">
+                                    <span class="badge">${data.category}</span>
+                                    <h4 class="carousel-title">
+                                        <a href="reader.html?id=${doc.id}">${data.title}</a>
+                                    </h4>
+                                </div>
+                            </article>
+                        `;
+                    });
+                } else {
+                    track.innerHTML = `<div class="no-content-msg">No articles tagged for Carousel Track.</div>`;
+                }
+            } catch (err) { console.error("Carousel error:", err); }
+        }
+
+        // 10. Sermon & Broadcast Media Loader
+        async function loadSermonMedia() {
+            const videoGrid = document.getElementById("videoGrid");
+            try {
+                const q = query(collection(db, "media"), orderBy("publishedAt", "desc"), limit(3));
+                const snapshot = await getDocs(q);
+                if (!snapshot.empty) {
+                    videoGrid.innerHTML = "";
+                    snapshot.forEach(doc => {
+                        const media = doc.data();
+                        videoGrid.innerHTML += `
+                            <div class="video-card">
+                                <div class="video-thumb">
+                                    <img src="${formatDropboxUrl(media.thumbnailUrl)}" alt="${media.title}">
+                                    <a href="${media.mediaUrl || '#'}" target="_blank" class="play-btn"><i class="fa-solid fa-play"></i></a>
+                                </div>
+                                <div class="video-info">
+                                    <h4 class="video-title">${media.title}</h4>
+                                </div>
+                            </div>
+                        `;
+                    });
+                } else {
+                    videoGrid.innerHTML = `<div class="no-content-msg">No sermon media or podcasts available.</div>`;
+                }
+            } catch (err) { 
+                videoGrid.innerHTML = `<div class="no-content-msg">No sermon media uploaded yet.</div>`;
+            }
+        }
+
+        // 11. Pastoral Perspectives (Opinion Items)
+        async function loadPastoralPerspectives() {
+            const container = document.getElementById("opinionList");
+            try {
+                const q = query(
+                    collection(db, "articles"),
+                    where("status", "==", "published"),
+                    where("category", "==", "Pastoral Leadership"),
+                    limit(2)
+                );
+                const snapshot = await getDocs(q);
+                if (!snapshot.empty) {
+                    container.innerHTML = "";
+                    snapshot.forEach(doc => {
+                        const data = doc.data();
+                        container.innerHTML += `
+                            <div class="opinion-item">
+                                <img src="${data.author?.avatar || 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80'}" alt="${data.author?.name}" class="author-avatar">
+                                <div class="opinion-body">
+                                    <span class="author-name">${data.author?.name || 'Gospel Intel Contributor'}</span>
+                                    <h4 class="opinion-quote">
+                                        <a href="reader.html?id=${doc.id}">${data.title}</a>
+                                    </h4>
+                                </div>
+                            </div>
+                        `;
+                    });
+                } else {
+                    container.innerHTML = `<div class="no-content-msg">No pastoral columns published.</div>`;
+                }
+            } catch (err) {
+                container.innerHTML = `<div class="no-content-msg">No pastoral columns available.</div>`;
+            }
+        }
+
+        // 12. Newsletter Form Submit
+        document.getElementById("newsletterForm")?.addEventListener("submit", async (e) => {
+            e.preventDefault();
+            const emailInput = document.getElementById("newsletterEmail");
+            const email = emailInput.value.trim();
+            if (email) {
+                try {
+                    await addDoc(collection(db, "subscribers"), {
+                        email: email,
+                        subscribedAt: serverTimestamp()
+                    });
+                    alert("Thank you for subscribing to Gospel Intel!");
+                    emailInput.value = "";
+                } catch (err) {
+                    alert("Thank you for subscribing!");
+                    emailInput.value = "";
+                }
+            }
+        });
+    </script>
+</body>
+</html>
