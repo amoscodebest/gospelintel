@@ -3,6 +3,10 @@
     {
       "source": "/share/:id",
       "destination": "/api/share?id=:id"
+    },
+    {
+      "source": "/reader",
+      "destination": "/api/share"
     }
   ]
 }
