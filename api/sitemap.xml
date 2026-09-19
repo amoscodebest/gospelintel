@@ -1,0 +1,94 @@
+// /api/sitemap.js
+
+export default async function handler(req, res) {
+  const BASE_URL = "https://gospelintel.vercel.app";
+  const FIREBASE_PROJECT_ID = "primeintelmedia-e2fe3";
+
+  try {
+    // 1. Fetch articles using Firestore REST API (works seamlessly in Serverless/Edge without heavy SDKs)
+    const firestoreUrl = `https://firestore.googleapis.com/v1/projects/${FIREBASE_PROJECT_ID}/databases/(default)/documents/articles`;
+    const response = await fetch(firestoreUrl);
+    
+    let articles = [];
+    if (response.ok) {
+      const data = await response.json();
+      articles = data.documents || [];
+    }
+
+    // 2. Static pages array
+    const staticPages = [
+      { url: `${BASE_URL}/`, priority: "1.0", changefreq: "daily" },
+      { url: `${BASE_URL}/index.html`, priority: "0.8", changefreq: "daily" },
+      { url: `${BASE_URL}/reader.html`, priority: "0.5", changefreq: "weekly" }
+    ];
+
+    // 3. Build XML entries for static pages
+    let urlsXml = staticPages
+      .map(
+        (page) => `
+  <url>
+    <loc>${page.url}</loc>
+    <changefreq>${page.changefreq}</changefreq>
+    <priority>${page.priority}</priority>
+  </url>`
+      )
+      .join("");
+
+    // 4. Build XML entries for dynamic Firestore articles
+    articles.forEach((doc) => {
+      // Extract document ID from path "projects/.../documents/articles/{id}"
+      const id = doc.name.split("/").pop();
+      const fields = doc.fields || {};
+
+      // Parse timestamp or fallback to current date
+      let lastMod = new Date().toISOString();
+      if (fields.updatedAt?.timestampValue) {
+        lastMod = new Date(fields.updatedAt.timestampValue).toISOString();
+      } else if (fields.createdAt?.timestampValue) {
+        lastMod = new Date(fields.createdAt.timestampValue).toISOString();
+      }
+
+      const articleUrl = `${BASE_URL}/reader.html?id=${id}`;
+
+      urlsXml += `
+  <url>
+    <loc>${escapeXml(articleUrl)}</loc>
+    <lastmod>${lastMod}</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>`;
+    });
+
+    // 5. Construct full sitemap XML
+    const xmlContent = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${urlsXml}
+</urlset>`;
+
+    // 6. Return XML response with caching headers (cache for 1 hour, stale-while-revalidate for 1 day)
+    res.setHeader("Content-Type", "text/xml; charset=utf-8");
+    res.setHeader(
+      "Cache-Control",
+      "public, s-maxage=3600, stale-while-revalidate=86400"
+    );
+    return res.status(200).send(xmlContent);
+
+  } catch (error) {
+    console.error("Error generating sitemap:", error);
+    return res.status(500).send("Error generating sitemap");
+  }
+}
+
+// Helper to escape special characters for valid XML
+function escapeXml(unsafe) {
+  return unsafe.replace(/[<>&'"]/g, (c) => {
+    switch (c) {
+      case "<": return "&lt;";
+      case ">": return "&gt;";
+      case "&": return "&amp;";
+      case "'": return "&apos;";
+      case '"': return "&quot;";
+      default: return c;
+    }
+  });
+}
